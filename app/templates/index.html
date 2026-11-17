@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Dandy's World - English Adventure con Sofía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #3498db;
+    --primary-dark: #2980b9;
+    --accent: #f39c12;
+    --green: #2ecc71;
+    --green-dark: #27ae60;
+    --red: #e74c3c;
+    --purple: #9b59b6;
+    --bg: #f0f4f8;
+    --card-bg: #ffffff;
+    --text: #2c3e50;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', 'Nunito', -apple-system, sans-serif;
+    background: linear-gradient(135deg, #e0f2fe 0%, #fef3c7 50%, #f3e8ff 100%);
+    min-height: 100vh;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* App Container */
+  .app-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 12px 16px 80px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Header */
+  .top-navbar {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 10px 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2.5px solid #bae6fd;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+    animation: bounce 2s infinite ease-in-out;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  .nav-title h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0369a1;
+  }
+
+  .nav-title p {
+    margin: 2px 0 0 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .score-badge {
+    background: #fef08a;
+    border: 2px solid #eab308;
+    color: #854d0e;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 25px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-pdf {
+    background: #ef4444;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(239,68,68,0.3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.15s;
+  }
+
+  .btn-pdf:active {
+    transform: scale(0.95);
+  }
+
+  /* Stage Navigation Tabs */
+  .tabs-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .tabs-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    flex: 1;
+    min-width: 140px;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 10px 8px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s;
+  }
+
+  .tab-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #0369a1;
+    box-shadow: 0 4px 12px rgba(2,132,199,0.35);
+    transform: translateY(-2px);
+  }
+
+  .tab-btn img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  /* Stage Content View */
+  .stage-view {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    animation: fadeIn 0.25s ease-in-out;
+  }
+
+  .stage-view.active {
+    display: flex;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Card */
+  .card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    border: 2px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+
+  .card-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px dashed #e2e8f0;
+    padding-bottom: 10px;
+  }
+
+  .card-badge {
+    background: #0284c7;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    flex: 1;
+  }
+
+  .card-hint {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-style: italic;
+  }
+
+  /* Helper boxes */
+  .rule-pill {
+    background: #fef9c3;
+    border: 1.5px dashed #eab308;
+    color: #854d0e;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .story-box {
+    background: #ecfdf5;
+    border-left: 5px solid #10b981;
+    padding: 10px 14px;
+    border-radius: 0 12px 12px 0;
+    color: #065f46;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  /* Interactive Elements */
+  .question-item {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .q-prompt {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .q-num {
+    color: #0284c7;
+    font-weight: 800;
+  }
+
+  .choices-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .choice-btn {
+    background: #ffffff;
+    border: 2px solid #94a3b8;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.15s;
+    touch-action: manipulation;
+  }
+
+  .choice-btn:active {
+    transform: scale(0.96);
+  }
+
+  .choice-btn.selected-correct {
+    background: #dcfce7 !important;
+    border-color: #22c55e !important;
+    color: #15803d !important;
+  }
+
+  .choice-btn.selected-wrong {
+    background: #fee2e2 !important;
+    border-color: #ef4444 !important;
+    color: #b91c1c !important;
+  }
+
+  /* Fill Blank Interactive */
+  .blank-target {
+    display: inline-block;
+    border-bottom: 2.5px dashed #0284c7;
+    min-width: 110px;
+    padding: 2px 8px;
+    color: #0369a1;
+    font-weight: 800;
+    text-align: center;
+    background: #f0f9ff;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+  }
+
+  /* Word Bank Floating */
+  .interactive-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: #faf5ff;
+    border: 2px solid #e9d5ff;
+    border-radius: 14px;
+    padding: 10px;
+    justify-content: center;
+  }
+
+  .bank-tag {
+    background: #ffffff;
+    border: 2px solid #c084fc;
+    color: #6b21a8;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .bank-tag:active {
+    transform: scale(0.93);
+    background: #f3e8ff;
+  }
+
+  .bank-tag.used {
+    opacity: 0.35;
+    text-decoration: line-through;
+    pointer-events: none;
+  }
+
+  /* Supermarket Sorting Game */
+  .sorting-game {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .basket-col {
+    background: #f8fafc;
+    border: 2.5px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 220px;
+  }
+
+  .basket-col.basket-c {
+    border-color: #86efac;
+    background: #f0fdf4;
+  }
+
+  .basket-col.basket-u {
+    border-color: #fde047;
+    background: #fefce8;
+  }
+
+  .basket-header {
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-align: center;
+    padding-bottom: 6px;
+    border-bottom: 1.5px dashed #cbd5e1;
+  }
+
+  .basket-items {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .sorted-item {
+    background: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1.5px solid #cbd5e1;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .food-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    background: #ffffff;
+    border: 2px dashed #94a3b8;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .food-pill-btn {
+    background: #f1f5f9;
+    border: 2px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.15s;
+  }
+
+  .food-pill-btn:active {
+    transform: scale(0.94);
+  }
+
+  /* Preposition Visualizer */
+  .prep-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .prep-card {
+    background: #e0f2fe;
+    border: 1.5px solid #7dd3fc;
+    color: #0369a1;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Bottom Bar */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 2px solid #e2e8f0;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+    z-index: 100;
+  }
+
+  .nav-step-btn {
+    background: #0284c7;
+    color: white;
+    border: none;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 10px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(2,132,199,0.3);
+  }
+
+  .nav-step-btn.btn-prev {
+    background: #64748b;
+  }
+
+  /* Confetti canvas */
+  #confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Name Customization Modal */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 16px;
+  }
+
+  .modal-backdrop.show {
+    display: flex;
+    animation: fadeInModal 0.25s ease-out;
+  }
+
+  @keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .modal-card {
+    background: #ffffff;
+    border: 3.5px solid #38bdf8;
+    border-radius: 24px;
+    padding: 24px 20px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .modal-avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    animation: bounce 2s infinite ease-in-out;
+  }
+
+  .modal-title {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0369a1;
+  }
+
+  .modal-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  .name-input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .name-input-group label {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #334155;
+  }
+
+  .name-input-field {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0369a1;
+    padding: 12px 16px;
+    border: 2.5px solid #7dd3fc;
+    border-radius: 14px;
+    outline: none;
+    background: #f0f9ff;
+    box-sizing: border-box;
+    transition: all 0.2s;
+  }
+
+  .name-input-field:focus {
+    border-color: #0284c7;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+  }
+
+  .btn-modal-start {
+    width: 100%;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 12px 20px;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    transition: transform 0.15s;
+  }
+
+  .btn-modal-start:active {
+    transform: scale(0.97);
+  }
+
+  .student-pill {
+    background: #ffffff;
+    border: 2px solid #bae6fd;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #0369a1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .btn-change-icon {
+    background: #e0f2fe;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.75rem;
+  }
+
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Name Customization Modal -->
+<div class="modal-backdrop" id="name-modal">
+  <div class="modal-card">
+    <img src="/static/dandy_assets/dandy.png" class="modal-avatar" alt="Dandy">
+    <h2 class="modal-title">⭐ Dandy's World English!</h2>
+    <p class="modal-subtitle">Welcome to Gardenview! What's your name?<br><span style="font-size:0.85rem; color:#94a3b8;">(¿Cómo te llamás?)</span></p>
+    
+    <div class="name-input-group">
+      <label for="student-name-input">Student Name / Nombre:</label>
+      <input type="text" id="student-name-input" class="name-input-field" placeholder="Tu nombre..." value="Sofía" maxlength="25" onkeydown="if(event.key==='Enter') saveStudentName()">
+    </div>
+
+    <button class="btn-modal-start" onclick="saveStudentName()">🚀 ¡Let's Play! / ¡A jugar!</button>
+  </div>
+</div>
+
+
+<div class="app-container">
+
+  <!-- Top Navigation -->
+  <header class="top-navbar">
+    <div class="nav-brand">
+      <img src="/static/dandy_assets/dandy.png" class="nav-avatar" alt="Dandy">
+      <div class="nav-title">
+        <h1>Sofía & Dandy's World</h1>
+        <p>Integrator English Adventure • 3rd Grade</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <div class="student-pill" onclick="openNameModal()" title="Clic para cambiar de nombre">
+        <span>👤</span>
+        <span id="student-name-header">Sofía</span>
+        <span class="btn-change-icon">✏️</span>
+      </div>
+      <div class="score-badge" id="score-display">⭐ 0 / 20</div>
+      <a href="/static/Repaso_Ingles_Sofia_3er_Grado.pdf" target="_blank" class="btn-pdf">
+        🖨️ PDF (5 Págs)
+      </a>
+    </div>
+  </header>
+
+  <!-- Stage Tabs -->
+  <nav class="tabs-scroll">
+    <button class="tab-btn active" onclick="switchStage(1)">
+      <img src="/static/dandy_assets/poppy.png" alt="Poppy">
+      <span>1. School & Routines</span>
+    </button>
+    <button class="tab-btn" onclick="switchStage(2)">
+      <img src="/static/dandy_assets/flutter.png" alt="Flutter">
+      <span>2. Nature & Where?</span>
+    </button>
+    <button class="tab-btn" onclick="switchStage(3)">
+      <img src="/static/dandy_assets/sprout.png" alt="Sprout">
+      <span>3. Food & Can/Can't</span>
+    </button>
+    <button class="tab-btn" onclick="switchStage(4)">
+      <img src="/static/dandy_assets/astro.png" alt="Astro">
+      <span>4. Actions Right Now</span>
+    </button>
+    <button class="tab-btn" onclick="switchStage(5)">
+      <img src="/static/dandy_assets/boxten.png" alt="Boxten">
+      <span>5. Final Exam!</span>
+    </button>
+  </nav>
+
+  <!-- ============================================== -->
+  <!-- STAGE 1: School, Family & Present Simple       -->
+  <!-- ============================================== -->
+  <section class="stage-view active" id="stage-1">
+    <div class="rule-pill">
+      🏫 <strong>Unit 1, 2 & 4:</strong> Family, School & Daily Routines with Dandy and Poppy!
+    </div>
+
+    <!-- Act 1: Vocabulary -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge">1</span>
+        <h2 class="card-title">Poppy's School & Family Words</h2>
+        <span class="card-hint">Tap the correct word!</span>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">a.</span> My mom's father is my...</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">grandfather</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">brother</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">cousin</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">b.</span> My uncle and aunt's son is my...</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">sister</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">cousin</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">grandfather</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">c.</span> Poppy keeps her pencils, ruler and rubber neatly inside her...</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">playground</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">pencil case</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">library</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">d.</span> When I make a mistake with a pencil, I erase it with my...</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">rubber (eraser)</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">sharpener</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">ruler</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">e.</span> During playtime, we run and play with new friends in the...</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">canteen</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">playground</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">classroom</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Act 2: Present Simple -s -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#ea580c;">2</span>
+        <h2 class="card-title">The Magic "-s" Rule with the Toons! (Unit 4)</h2>
+        <span class="card-hint">He / She / It ➔ adds -s!</span>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> Dandy (walk / walks) to school every morning at 8:00 AM.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">walk</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">walks</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> Poppy and Boxten (play / plays) in the schoolyard.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">play</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">plays</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> The English teacher (write / writes) new words on the board.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">write</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">writes</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">4.</span> <span class="dyn-student-name">Sofía</span> and her sister (eat / eats) breakfast before school.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">eat</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">eats</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Act 3: don't / doesn't -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#16a34a;">3</span>
+        <h2 class="card-title">don't / doesn't & Do / Does</h2>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">a.</span> Timmy ______ (don't / doesn't) drink cold soda at night.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">don't</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">doesn't</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">b.</span> The Toons ______ (don't / doesn't) go to school on Sundays.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">don't</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">doesn't</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">c.</span> ______ your brother ride a bike in the park? — Yes, he does!</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">Do</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">Does</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">d.</span> ______ you like playing in Dandy's World, <span class="dyn-student-name">Sofía</span>? — Yes, I do!</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">Do</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">Does</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Act 4: Story Reading True / False -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#9333ea;">4</span>
+        <h2 class="card-title">Story Reading: "New Friends at School & Gardenview"</h2>
+        <span class="card-hint">Read and choose True or False!</span>
+      </div>
+
+      <div class="story-box">
+        "Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground."
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> Poppy's pencil case is red.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">True [T]</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">False [F] (It is blue!)</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> On the desk are 3 yellow pencils.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">True [T]</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">False [F]</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> They read stories in the library.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">True [T]</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">False [F]</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">4.</span> They play games in the canteen.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">True [T]</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">False [F] (In the playground!)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- STAGE 2: Nature, There is / are & Pebble       -->
+  <!-- ============================================== -->
+  <section class="stage-view" id="stage-2">
+    <div class="rule-pill" style="background:#eafaf1; border-color:#27ae60; color:#145a32;">
+      🌿 <strong>Unit 3:</strong> Nature, There is / There are & Prepositions with Flutter & Pebble!
+    </div>
+
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#22c55e;">1</span>
+        <h2 class="card-title">There is vs. There are in Dandy's Garden</h2>
+        <span class="card-hint">There is (1) | There are (2 or more)</span>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> ______ a golden sun shining brightly in the blue sky.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">There is</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">There are</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> ______ five tall trees in the peaceful nature park.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">There is</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">There are</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> ______ twelve colourful butterflies flying near Flutter.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">There is</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">There are</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">4.</span> ______ a cute pet rock dog named Pebble resting on the grass.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">There is</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">There are</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prepositions with Pebble -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge">2</span>
+        <h2 class="card-title">Where is Pebble? (Prepositions of Place)</h2>
+      </div>
+
+      <div class="prep-showcase">
+        <span class="prep-card">📥 IN (adentro)</span>
+        <span class="prep-card">🔛 ON (sobre)</span>
+        <span class="prep-card">👇 UNDER (debajo)</span>
+        <span class="prep-card">🙈 BEHIND (detrás)</span>
+        <span class="prep-card">👉 NEXT TO (al lado)</span>
+        <span class="prep-card">↔️ BETWEEN (entre)</span>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">a.</span> Pebble is hiding ______ the big tree trunk.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">behind</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">in</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">between</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">b.</span> The fish is swimming ______ the clear river water.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">on</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">in</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">behind</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">c.</span> Pebble is sleeping ______ the wooden desk.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">under</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">between</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">on</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">d.</span> Flutter is flying ______ two pink flowers.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">next to</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">between</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">under</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- STAGE 3: Food, Countable / Uncountable & Sprout -->
+  <!-- ============================================== -->
+  <section class="stage-view" id="stage-3">
+    <div class="rule-pill" style="background:#fef3c7; border-color:#eab308; color:#854d0e;">
+      🍓 <strong>Unit 7:</strong> Food Sorting with Sprout & "Cows Can't Dance!"
+    </div>
+
+    <!-- Sorting Game -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#ea580c;">1</span>
+        <h2 class="card-title">Supermarket Sorting with Sprout!</h2>
+        <span class="card-hint">Tap each food to send it to the right basket!</span>
+      </div>
+
+      <div class="food-pool" id="food-pool">
+        <button class="food-pill-btn" onclick="sortFood(this, 'apple', 'C')">🍎 apple</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'water', 'U')">🥛 water</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'banana', 'C')">🍌 banana</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'milk', 'U')">🥛 milk</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'cookie', 'C')">🍪 cookie</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'cheese', 'U')">🧀 cheese</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'sandwich', 'C')">🥪 sandwich</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'juice', 'U')">🧃 juice</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'egg', 'C')">🥚 egg</button>
+        <button class="food-pill-btn" onclick="sortFood(this, 'bread', 'U')">🍞 bread</button>
+      </div>
+
+      <div class="sorting-game">
+        <div class="basket-col basket-c">
+          <div class="basket-header">🍎 COUNTABLE (1, 2, 3...)</div>
+          <div class="basket-items" id="basket-c-items"></div>
+        </div>
+        <div class="basket-col basket-u">
+          <div class="basket-header">🥛 UNCOUNTABLE (Liquids & Masses)</div>
+          <div class="basket-items" id="basket-u-items"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Can / Can't -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#9333ea;">2</span>
+        <h2 class="card-title">Can / Can't: "Cows Can't Dance!"</h2>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> Cows (can / can't) dance the tango! 🐮 💃</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">can't (Cows can't dance!)</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> Flutter the Toon (can / can't) fly high in the blue sky. 🦋</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">can</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">can't</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> Pebble (can / can't) bark like a happy puppy. 🐶</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">can</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">can't</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">4.</span> A little goldfish (can / can't) climb a tall tree. 🐟</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">can't</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- STAGE 4: Actions & Present Continuous          -->
+  <!-- ============================================== -->
+  <section class="stage-view" id="stage-4">
+    <div class="rule-pill" style="background:#f3e8ff; border-color:#c084fc; color:#6b21a8;">
+      🌙 <strong>Unit 8 & 9:</strong> What are Astro, Goob & Friends doing right now? (am / is / are + verb-ing)
+    </div>
+
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#8b5cf6;">1</span>
+        <h2 class="card-title">Goob's "-ing" Transformer!</h2>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> read + ing ➔</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">reading</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">readding</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> dance + ing ➔ (drop the -e!)</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">dancing</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">danceing</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> swim + ing ➔ (double the -m!)</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">swimming</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">swiming</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">4.</span> run + ing ➔ (double the -n!)</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">running</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">runing</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete with am/is/are + ing -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge">2</span>
+        <h2 class="card-title">Happening RIGHT NOW!</h2>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> Look! Astro ______ (sleep) with his starry nightcap.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">is sleeping</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">are sleeping</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">sleeps</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> Goob ______ (hug) all his Toon friends warmly.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">is hugging</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">are hugging</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> Poppy and Boxten ______ (play) in the corridor.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">is playing</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">are playing</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">4.</span> Sofía ______ (study) English with her family right now!</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">is studying</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">are studying</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- STAGE 5: Final Champion Exam                   -->
+  <!-- ============================================== -->
+  <section class="stage-view" id="stage-5">
+    <div class="rule-pill" style="background:#ecfdf5; border-color:#10b981; color:#065f46;">
+      🏆 <strong>Grand Champion Exam:</strong> Show Miss Vane & Miss Ani everything you know!
+    </div>
+
+    <!-- Reading Story -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge">A</span>
+        <h2 class="card-title">A Sunny Picnic in Dandy's Park</h2>
+      </div>
+
+      <div class="story-box">
+        "It is Wednesday. Timmy, <span class="dyn-student-name">Sofía</span> and their Toon friends are having a picnic in the nature park. There are <strong>five tall green trees</strong> near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: 'I love nature!'"
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> Where are they having a picnic?</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">In the library</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">In the nature park</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">At school</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> How many tall green trees are there?</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">Three</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">Four</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">Five</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> What is Flutter doing?</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">Flying</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">Sleeping</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">Dancing</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">4.</span> What is Pebble doing on the grass?</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">Eating</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">Running</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">Swimming</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Trivia -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#f59e0b;">B</span>
+        <h2 class="card-title">Grammar & Colours Champion Quest</h2>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">1.</span> Water, juice and milk are...</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, false)">countable</button>
+          <button class="choice-btn" onclick="checkChoice(this, true)">uncountable</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">2.</span> Cows ______ dance, but they can walk.</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">can't</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="q-prompt"><span class="q-num">3.</span> Colour mix: Blue + Yellow =</div>
+        <div class="choices-grid">
+          <button class="choice-btn" onclick="checkChoice(this, true)">Green</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">Purple</button>
+          <button class="choice-btn" onclick="checkChoice(this, false)">Orange</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Certificate Card -->
+    <div class="card" id="certificate-card" style="text-align:center; background: linear-gradient(135deg, #fef08a 0%, #bbf7d0 100%); border-color:#22c55e;">
+      <h2 style="margin:4px 0; color:#15803d; font-size:1.4rem;">🎓 CONGRATULATIONS, <span class="dyn-student-name" style="text-transform:uppercase;">SOFÍA</span>! 🎓</h2>
+      <p style="margin:4px 0; font-size:1.05rem; font-weight:700; color:#166534;">
+        You are an official Dandy's World English Superstar!
+      </p>
+      <div style="font-size:2.2rem; margin:6px 0;">🌟 🏆 ⭐ 🌸 🐶</div>
+      <p style="margin:4px 0; font-size:0.95rem; font-weight:800; color:#14532d;">
+        Ready for Wednesday, December 2nd with Miss Vane & Miss Ani!
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Bottom Navigation Bar -->
+<div class="bottom-nav">
+  <button class="nav-step-btn btn-prev" id="btn-prev" onclick="prevStage()">⬅️ Anterior</button>
+  <button class="nav-step-btn" id="btn-next" onclick="nextStage()">Siguiente ➡️</button>
+</div>
+
+<script>
+  let currentStage = 1;
+  let score = 0;
+  const answered = new Set();
+
+  // Audio Synthesizer (Zero external dependencies)
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  function playTone(freq, type, duration, delay=0) {
+    setTimeout(() => {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch(e) {}
+    }, delay);
+  }
+
+  function playCorrectSound() {
+    playTone(523.25, 'sine', 0.12, 0);   // C5
+    playTone(659.25, 'sine', 0.12, 80);  // E5
+    playTone(783.99, 'sine', 0.25, 160); // G5
+  }
+
+  function playWrongSound() {
+    playTone(220, 'sawtooth', 0.15, 0);
+    playTone(196, 'sawtooth', 0.25, 120);
+  }
+
+  function playFanfare() {
+    playTone(523.25, 'triangle', 0.15, 0);
+    playTone(659.25, 'triangle', 0.15, 120);
+    playTone(783.99, 'triangle', 0.15, 240);
+    playTone(1046.50, 'triangle', 0.45, 360);
+    launchConfetti();
+  }
+
+  // Confetti Engine
+  function launchConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const pieces = [];
+    const colors = ['#f43f5e', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
+    for(let i=0; i<80; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: -10,
+        r: Math.random() * 8 + 4,
+        d: Math.random() * 80 + 10,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.random() * 10 - 5,
+        tiltAngle: 0,
+        tiltAngleInc: Math.random() * 0.08 + 0.04
+      });
+    }
+
+    let animationFrame;
+    let frames = 0;
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.tiltAngle += p.tiltAngleInc;
+        p.y += (Math.cos(p.d) + 3 + p.r / 2);
+        p.x += Math.sin(p.d);
+        p.tilt = Math.sin(p.tiltAngle) * 12;
+
+        ctx.beginPath();
+        ctx.lineWidth = p.r / 2;
+        ctx.strokeStyle = p.color;
+        ctx.moveTo(p.x + p.tilt + p.r, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
+        ctx.stroke();
+      });
+
+      frames++;
+      if (frames < 120) {
+        animationFrame = requestAnimationFrame(render);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+    render();
+  }
+
+  // Answer Checker
+  function checkChoice(btn, isCorrect, wordLabel) {
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const parent = btn.closest('.question-item');
+    if (!parent) return;
+
+    const allBtns = parent.querySelectorAll('.choice-btn');
+    allBtns.forEach(b => {
+      b.classList.remove('selected-correct', 'selected-wrong');
+    });
+
+    if (isCorrect) {
+      btn.classList.add('selected-correct');
+      playCorrectSound();
+      if (!parent.dataset.scored) {
+        parent.dataset.scored = "true";
+        score++;
+        document.getElementById('score-display').innerText = `⭐ ${score} pts`;
+        launchConfetti();
+      }
+    } else {
+      btn.classList.add('selected-wrong');
+      playWrongSound();
+    }
+  }
+
+  // Supermarket Sorting
+  const sortedCounts = { C: 0, U: 0 };
+  function sortFood(btn, name, type) {
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const targetList = type === 'C' ? document.getElementById('basket-c-items') : document.getElementById('basket-u-items');
+    const item = document.createElement('div');
+    item.className = 'sorted-item';
+    item.innerHTML = `<span>${btn.innerText}</span> <span>✅</span>`;
+    targetList.appendChild(item);
+
+    btn.style.display = 'none';
+    playCorrectSound();
+
+    score++;
+    document.getElementById('score-display').innerText = `⭐ ${score} pts`;
+
+    if (document.getElementById('food-pool').querySelectorAll('button[style*="display: none"]').length === 10) {
+      playFanfare();
+    }
+  }
+
+  // Stage Switcher
+  function switchStage(stageNum) {
+    currentStage = stageNum;
+    document.querySelectorAll('.stage-view').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+    const activeStage = document.getElementById(`stage-${stageNum}`);
+    if (activeStage) activeStage.classList.add('active');
+
+    const activeTab = document.querySelectorAll('.tab-btn')[stageNum - 1];
+    if (activeTab) activeTab.classList.add('active');
+
+    document.getElementById('btn-prev').style.visibility = (stageNum === 1) ? 'hidden' : 'visible';
+    const nextBtn = document.getElementById('btn-next');
+    if (stageNum === 5) {
+      nextBtn.innerText = '🏆 ¡Terminar!';
+      nextBtn.onclick = () => { playFanfare(); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); };
+    } else {
+      nextBtn.innerText = 'Siguiente ➡️';
+      nextBtn.onclick = nextStage;
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function nextStage() {
+    if (currentStage < 5) switchStage(currentStage + 1);
+  }
+
+  function prevStage() {
+    if (currentStage > 1) switchStage(currentStage - 1);
+  }
+
+  
+  // Student Name Manager
+  let currentStudentName = localStorage.getItem('dandy_student_name') || 'Sofía';
+
+  function applyStudentName(name) {
+    if (!name || !name.trim()) name = 'Sofía';
+    name = name.trim();
+    currentStudentName = name;
+    localStorage.setItem('dandy_student_name', name);
+
+    document.getElementById('student-name-header').innerText = name;
+    document.querySelectorAll('.dyn-student-name').forEach(el => {
+      el.innerText = name;
+    });
+    document.title = `${name} & Dandy's World - English Review`;
+  }
+
+  function openNameModal() {
+    const modal = document.getElementById('name-modal');
+    const input = document.getElementById('student-name-input');
+    input.value = currentStudentName;
+    modal.classList.add('show');
+    setTimeout(() => input.focus(), 100);
+  }
+
+  function saveStudentName() {
+    const input = document.getElementById('student-name-input');
+    applyStudentName(input.value);
+    document.getElementById('name-modal').classList.remove('show');
+    playTone(659.25, 'sine', 0.15, 0);
+  }
+
+  // Check if first time or prompt
+  window.addEventListener('DOMContentLoaded', () => {
+    applyStudentName(currentStudentName);
+    if (!localStorage.getItem('dandy_student_name')) {
+      setTimeout(openNameModal, 400);
+    }
+  });
+
+  // Init
+  switchStage(1);
+</script>
+</body>
+</html>

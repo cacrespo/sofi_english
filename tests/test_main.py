@@ -1,0 +1,33 @@
+from fastapi.testclient import TestClient
+
+from app.main import app
+
+client = TestClient(app)
+
+
+def test_home_page():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert "Dandy's World" in response.text
+    assert "student-name-input" in response.text
+
+
+def test_health_check():
+    response = client.get("/health")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "ok"
+    assert data["domain"] == "english.hurlingham.xyz"
+
+
+def test_pdf_endpoint():
+    response = client.get("/pdf")
+    assert response.status_code == 200
+    assert response.headers["content-type"] == "application/pdf"
+
+
+def test_static_assets():
+    for toon in ["dandy.png", "poppy.png", "pebble.png", "flutter.png", "sprout.png"]:
+        response = client.get(f"/static/dandy_assets/{toon}")
+        assert response.status_code == 200
+        assert "image/png" in response.headers["content-type"]
