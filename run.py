@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Script de inicio local para sofi_english."""
+
 import uvicorn
 
 if __name__ == "__main__":
