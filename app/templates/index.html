@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Dandy's World - English Adventure con Sofía</title>
+<title>Sofía & Dandy's World - English Practice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -52,25 +52,27 @@
   .top-navbar {
     background: #ffffff;
     border-radius: 20px;
-    padding: 10px 18px;
+    padding: 10px 16px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 2.5px solid #bae6fd;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .nav-brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
 
   .nav-avatar {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
     animation: bounce 2s infinite ease-in-out;
   }
 
@@ -81,7 +83,7 @@
 
   .nav-title h1 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: #0369a1;
   }
@@ -96,7 +98,36 @@
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .student-pill {
+    background: #ffffff;
+    border: 2px solid #bae6fd;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #0369a1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  .btn-change-icon {
+    background: #e0f2fe;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.72rem;
   }
 
   .score-badge {
@@ -104,12 +135,33 @@
     border: 2px solid #eab308;
     color: #854d0e;
     font-weight: 800;
-    padding: 6px 14px;
-    border-radius: 25px;
-    font-size: 1rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.95rem;
     display: flex;
     align-items: center;
     gap: 6px;
+  }
+
+  .btn-shuffle {
+    background: #8b5cf6;
+    color: #ffffff;
+    border: none;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 7px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(139,92,246,0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.15s;
+  }
+
+  .btn-shuffle:active {
+    transform: scale(0.94);
   }
 
   .btn-pdf {
@@ -118,17 +170,29 @@
     text-decoration: none;
     font-weight: 800;
     font-size: 0.85rem;
-    padding: 8px 14px;
+    padding: 7px 12px;
     border-radius: 12px;
     box-shadow: 0 3px 8px rgba(239,68,68,0.3);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     transition: transform 0.15s;
   }
 
-  .btn-pdf:active {
-    transform: scale(0.95);
+  .speed-toggle-btn {
+    background: #ffffff;
+    border: 1.8px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    user-select: none;
   }
 
   /* Stage Navigation Tabs */
@@ -146,14 +210,14 @@
 
   .tab-btn {
     flex: 1;
-    min-width: 140px;
+    min-width: 135px;
     background: #ffffff;
     border: 2px solid #cbd5e1;
     border-radius: 14px;
-    padding: 10px 8px;
+    padding: 8px 6px;
     font-family: inherit;
     font-weight: 700;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     color: #475569;
     cursor: pointer;
     display: flex;
@@ -212,20 +276,20 @@
     align-items: center;
     gap: 10px;
     border-bottom: 2px dashed #e2e8f0;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
   }
 
   .card-badge {
     background: #0284c7;
     color: white;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 0.95rem;
     flex-shrink: 0;
   }
 
@@ -243,7 +307,6 @@
     font-style: italic;
   }
 
-  /* Helper boxes */
   .rule-pill {
     background: #fef9c3;
     border: 1.5px dashed #eab308;
@@ -264,7 +327,7 @@
     line-height: 1.45;
   }
 
-  /* Interactive Elements */
+  /* Interactive Question Items */
   .question-item {
     background: #f8fafc;
     border: 1.5px solid #e2e8f0;
@@ -275,12 +338,14 @@
     gap: 8px;
     font-size: 1rem;
     font-weight: 600;
+    animation: fadeIn 0.2s ease-in;
   }
 
   .q-prompt {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   .q-num {
@@ -324,58 +389,93 @@
     color: #b91c1c !important;
   }
 
-  /* Fill Blank Interactive */
-  .blank-target {
-    display: inline-block;
-    border-bottom: 2.5px dashed #0284c7;
-    min-width: 110px;
-    padding: 2px 8px;
+  /* TTS Speaker Buttons */
+  .btn-tts {
+    background: #e0f2fe;
+    border: 1.8px solid #7dd3fc;
     color: #0369a1;
-    font-weight: 800;
-    text-align: center;
-    background: #f0f9ff;
-    border-radius: 6px 6px 0 0;
-    cursor: pointer;
-  }
-
-  /* Word Bank Floating */
-  .interactive-bank {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    background: #faf5ff;
-    border: 2px solid #e9d5ff;
-    border-radius: 14px;
-    padding: 10px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.15s;
+    padding: 0;
+    flex-shrink: 0;
+    vertical-align: middle;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
 
-  .bank-tag {
-    background: #ffffff;
-    border: 2px solid #c084fc;
-    color: #6b21a8;
+  .btn-tts:active {
+    transform: scale(0.9);
+  }
+
+  .btn-tts.speaking {
+    background: #fef08a !important;
+    border-color: #eab308 !important;
+    animation: pulseSpeaking 0.6s infinite alternate;
+  }
+
+  @keyframes pulseSpeaking {
+    from { transform: scale(1); box-shadow: 0 0 0 rgba(234,179,8,0.3); }
+    to { transform: scale(1.15); box-shadow: 0 0 8px rgba(234,179,8,0.7); }
+  }
+
+  /* Sentence Feedback Box on Correct Answer */
+  .sentence-feedback {
+    display: none;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: #ecfdf5;
+    border: 1.5px solid #6ee7b7;
+    border-radius: 12px;
+    align-items: center;
+    gap: 10px;
+    animation: fadeInSentence 0.25s ease-out;
+  }
+
+  .sentence-feedback.show {
+    display: flex;
+  }
+
+  .sentence-feedback .feedback-text {
+    font-size: 0.95rem;
     font-weight: 700;
-    font-size: 0.9rem;
-    padding: 6px 12px;
+    color: #065f46;
+    line-height: 1.35;
+  }
+
+  @keyframes fadeInSentence {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn-listen-story {
+    background: #ffffff;
+    border: 1.8px solid #10b981;
+    color: #047857;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 5px 12px;
     border-radius: 20px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
     transition: all 0.15s;
-    user-select: none;
   }
 
-  .bank-tag:active {
-    transform: scale(0.93);
-    background: #f3e8ff;
+  .btn-listen-story:active {
+    transform: scale(0.95);
+    background: #ecfdf5;
   }
 
-  .bank-tag.used {
-    opacity: 0.35;
-    text-decoration: line-through;
-    pointer-events: none;
-  }
-
-  /* Supermarket Sorting Game */
+  /* Sorting Game */
   .sorting-game {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -467,7 +567,6 @@
     transform: scale(0.94);
   }
 
-  /* Preposition Visualizer */
   .prep-showcase {
     display: flex;
     flex-wrap: wrap;
@@ -520,17 +619,6 @@
 
   .nav-step-btn.btn-prev {
     background: #64748b;
-  }
-
-  /* Confetti canvas */
-  #confetti-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 9999;
   }
 
   /* Name Customization Modal */
@@ -650,108 +738,16 @@
     transform: scale(0.97);
   }
 
-  .student-pill {
-    background: #ffffff;
-    border: 2px solid #bae6fd;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: #0369a1;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
+  /* Confetti canvas */
+  #confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
   }
-
-  .btn-change-icon {
-    background: #e0f2fe;
-    border: none;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.75rem;
-  }
-
-
-  /* TTS Speaker Buttons */
-  .btn-tts {
-    background: #e0f2fe;
-    border: 1.8px solid #7dd3fc;
-    color: #0369a1;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: all 0.15s;
-    padding: 0;
-    flex-shrink: 0;
-    vertical-align: middle;
-    margin-right: 6px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  }
-
-  .btn-tts:active {
-    transform: scale(0.9);
-  }
-
-  .btn-tts.speaking {
-    background: #fef08a !important;
-    border-color: #eab308 !important;
-    animation: pulseSpeaking 0.6s infinite alternate;
-  }
-
-  @keyframes pulseSpeaking {
-    from { transform: scale(1); box-shadow: 0 0 0 rgba(234,179,8,0.3); }
-    to { transform: scale(1.15); box-shadow: 0 0 8px rgba(234,179,8,0.7); }
-  }
-
-  .btn-listen-story {
-    background: #ffffff;
-    border: 1.8px solid #10b981;
-    color: #047857;
-    font-family: inherit;
-    font-weight: 800;
-    font-size: 0.85rem;
-    padding: 5px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 8px;
-    transition: all 0.15s;
-  }
-
-  .btn-listen-story:active {
-    transform: scale(0.95);
-    background: #ecfdf5;
-  }
-
-  .speed-toggle-btn {
-    background: #ffffff;
-    border: 1.8px solid #cbd5e1;
-    border-radius: 20px;
-    padding: 4px 10px;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.82rem;
-    color: #475569;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    user-select: none;
-  }
-
 </style>
 </head>
 <body>
@@ -774,7 +770,6 @@
   </div>
 </div>
 
-
 <div class="app-container">
 
   <!-- Top Navigation -->
@@ -782,8 +777,8 @@
     <div class="nav-brand">
       <img src="/static/dandy_assets/dandy.png" class="nav-avatar" alt="Dandy">
       <div class="nav-title">
-        <h1>Sofía & Dandy's World</h1>
-        <p>Integrator English Adventure • 3rd Grade</p>
+        <h1><span class="dyn-student-name">Sofía</span> & Dandy's World</h1>
+        <p>Integrator English Adventure • 3rd Grade Review</p>
       </div>
     </div>
     <div class="nav-actions">
@@ -796,9 +791,16 @@
         <span id="speed-icon">🐰</span>
         <span id="speed-label">Normal</span>
       </button>
-      <div class="score-badge" id="score-display">⭐ 0 / 20</div>
+      <button class="speed-toggle-btn" id="autoread-toggle" onclick="toggleAutoRead()" title="Leer frase completa al acertar">
+        <span id="autoread-icon">🔊</span>
+        <span id="autoread-label">Frase: ON</span>
+      </button>
+      <button class="btn-shuffle" onclick="regenerateAllQuestions()" title="Cargar nuevas preguntas aleatorias">
+        🔄 Mezclar
+      </button>
+      <div class="score-badge" id="score-display">⭐ 0 pts</div>
       <a href="/static/Repaso_Ingles_Sofia_3er_Grado.pdf" target="_blank" class="btn-pdf">
-        🖨️ PDF (5 Págs)
+        🖨️ PDF
       </a>
     </div>
   </header>
@@ -827,199 +829,54 @@
     </button>
   </nav>
 
-  <!-- ============================================== -->
-  <!-- STAGE 1: School, Family & Present Simple       -->
-  <!-- ============================================== -->
+  <!-- STAGE 1 -->
   <section class="stage-view active" id="stage-1">
     <div class="rule-pill">
       🏫 <strong>Unit 1, 2 & 4:</strong> Family, School & Daily Routines with Dandy and Poppy!
     </div>
 
-    <!-- Act 1: Vocabulary -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge">1</span>
         <h2 class="card-title">Poppy's School & Family Words</h2>
         <span class="card-hint">Tap the correct word!</span>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'My mom\'s father is my...')" title="Listen / Escuchar">🔊</button><span class="q-num">a.</span> My mom's father is my...</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">grandfather</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">brother</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">cousin</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'My uncle and aunt\'s son is my...')" title="Listen / Escuchar">🔊</button><span class="q-num">b.</span> My uncle and aunt's son is my...</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">sister</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">cousin</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">grandfather</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy keeps her pencils, ruler and rubber neatly inside her...')" title="Listen / Escuchar">🔊</button><span class="q-num">c.</span> Poppy keeps her pencils, ruler and rubber neatly inside her...</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">playground</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">pencil case</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">library</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'When I make a mistake with a pencil, I erase it with my...')" title="Listen / Escuchar">🔊</button><span class="q-num">d.</span> When I make a mistake with a pencil, I erase it with my...</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">rubber (eraser)</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">sharpener</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">ruler</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'During playtime, we run and play with new friends in the...')" title="Listen / Escuchar">🔊</button><span class="q-num">e.</span> During playtime, we run and play with new friends in the...</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">canteen</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">playground</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">classroom</button>
-        </div>
-      </div>
+      <div id="container-s1-vocab" class="item-list"></div>
     </div>
 
-    <!-- Act 2: Present Simple -s -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge" style="background:#ea580c;">2</span>
         <h2 class="card-title">The Magic "-s" Rule with the Toons! (Unit 4)</h2>
         <span class="card-hint">He / She / It ➔ adds -s!</span>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Dandy (walk / walks) to school every morning at 8:00 AM.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Dandy (walk / walks) to school every morning at 8:00 AM.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">walk</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">walks</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy and Boxten (play / plays) in the schoolyard.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Poppy and Boxten (play / plays) in the schoolyard.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">play</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">plays</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'The English teacher (write / writes) new words on the board.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> The English teacher (write / writes) new words on the board.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">write</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">writes</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '<span class=&quot;dyn-student-name&quot;>Sofía</span> and her sister (eat / eats) breakfast before school.')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> <span class="dyn-student-name">Sofía</span> and her sister (eat / eats) breakfast before school.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">eat</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">eats</button>
-        </div>
-      </div>
+      <div id="container-s1-presentSimple" class="item-list"></div>
     </div>
 
-    <!-- Act 3: don't / doesn't -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge" style="background:#16a34a;">3</span>
-        <h2 class="card-title">don't / doesn't & Do / Does</h2>
+        <h2 class="card-title">don't / doesn't & Do / Does (Unit 4)</h2>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Timmy ______ (don\'t / doesn\'t) drink cold soda at night.')" title="Listen / Escuchar">🔊</button><span class="q-num">a.</span> Timmy ______ (don't / doesn't) drink cold soda at night.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">don't</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">doesn't</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'The Toons ______ (don\'t / doesn\'t) go to school on Sundays.')" title="Listen / Escuchar">🔊</button><span class="q-num">b.</span> The Toons ______ (don't / doesn't) go to school on Sundays.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">don't</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">doesn't</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ your brother ride a bike in the park? — Yes, he does!')" title="Listen / Escuchar">🔊</button><span class="q-num">c.</span> ______ your brother ride a bike in the park? — Yes, he does!</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">Do</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">Does</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ you like playing in Dandy\'s World, <span class=&quot;dyn-student-name&quot;>Sofía</span>? — Yes, I do!')" title="Listen / Escuchar">🔊</button><span class="q-num">d.</span> ______ you like playing in Dandy's World, <span class="dyn-student-name">Sofía</span>? — Yes, I do!</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">Do</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">Does</button>
-        </div>
-      </div>
+      <div id="container-s1-dontDoesnt" class="item-list"></div>
     </div>
-  
-    <!-- Act 4: Story Reading True / False -->
+
+    <!-- Act 4: Story Reading -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge" style="background:#9333ea;">4</span>
         <h2 class="card-title">Story Reading: "New Friends at School & Gardenview"</h2>
         <span class="card-hint">Read and choose True or False!</span>
       </div>
-
       <div class="story-box">
         "Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground."
+        <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, 'Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground.')">🎧 Escuchar Cuento (Listen)</button></div>
       </div>
-      <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, '&quot;Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground.&quot;')">🎧 Escuchar Cuento Completo (Listen)</button></div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy\'s pencil case is red.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Poppy's pencil case is red.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">True [T]</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">False [F] (It is blue!)</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'On the desk are 3 yellow pencils.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> On the desk are 3 yellow pencils.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">True [T]</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">False [F]</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'They read stories in the library.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> They read stories in the library.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">True [T]</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">False [F]</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'They play games in the canteen.')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> They play games in the canteen.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">True [T]</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">False [F] (In the playground!)</button>
-        </div>
-      </div>
+      <div id="container-s1-story" class="item-list"></div>
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- STAGE 2: Nature, There is / are & Pebble       -->
-  <!-- ============================================== -->
+  <!-- STAGE 2 -->
   <section class="stage-view" id="stage-2">
     <div class="rule-pill" style="background:#eafaf1; border-color:#27ae60; color:#145a32;">
       🌿 <strong>Unit 3:</strong> Nature, There is / There are & Prepositions with Flutter & Pebble!
@@ -1031,47 +888,14 @@
         <h2 class="card-title">There is vs. There are in Dandy's Garden</h2>
         <span class="card-hint">There is (1) | There are (2 or more)</span>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ a golden sun shining brightly in the blue sky.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> ______ a golden sun shining brightly in the blue sky.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">There is</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">There are</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ five tall trees in the peaceful nature park.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> ______ five tall trees in the peaceful nature park.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">There is</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">There are</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ twelve colourful butterflies flying near Flutter.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> ______ twelve colourful butterflies flying near Flutter.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">There is</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">There are</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ a cute pet rock dog named Pebble resting on the grass.')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> ______ a cute pet rock dog named Pebble resting on the grass.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">There is</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">There are</button>
-        </div>
-      </div>
+      <div id="container-s2-thereIsAre" class="item-list"></div>
     </div>
 
-    <!-- Prepositions with Pebble -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge">2</span>
         <h2 class="card-title">Where is Pebble? (Prepositions of Place)</h2>
       </div>
-
       <div class="prep-showcase">
         <span class="prep-card">📥 IN (adentro)</span>
         <span class="prep-card">🔛 ON (sobre)</span>
@@ -1080,74 +904,23 @@
         <span class="prep-card">👉 NEXT TO (al lado)</span>
         <span class="prep-card">↔️ BETWEEN (entre)</span>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Pebble is hiding ______ the big tree trunk.')" title="Listen / Escuchar">🔊</button><span class="q-num">a.</span> Pebble is hiding ______ the big tree trunk.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">behind</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">in</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">between</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'The fish is swimming ______ the clear river water.')" title="Listen / Escuchar">🔊</button><span class="q-num">b.</span> The fish is swimming ______ the clear river water.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">on</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">in</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">behind</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Pebble is sleeping ______ the wooden desk.')" title="Listen / Escuchar">🔊</button><span class="q-num">c.</span> Pebble is sleeping ______ the wooden desk.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">under</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">between</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">on</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Flutter is flying ______ two pink flowers.')" title="Listen / Escuchar">🔊</button><span class="q-num">d.</span> Flutter is flying ______ two pink flowers.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">next to</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">between</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">under</button>
-        </div>
-      </div>
+      <div id="container-s2-prepositions" class="item-list"></div>
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- STAGE 3: Food, Countable / Uncountable & Sprout -->
-  <!-- ============================================== -->
+  <!-- STAGE 3 -->
   <section class="stage-view" id="stage-3">
     <div class="rule-pill" style="background:#fef3c7; border-color:#eab308; color:#854d0e;">
       🍓 <strong>Unit 7:</strong> Food Sorting with Sprout & "Cows Can't Dance!"
     </div>
 
-    <!-- Sorting Game -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge" style="background:#ea580c;">1</span>
         <h2 class="card-title">Supermarket Sorting with Sprout!</h2>
         <span class="card-hint">Tap each food to send it to the right basket!</span>
       </div>
-
-      <div class="food-pool" id="food-pool">
-        <button class="food-pill-btn" onclick="sortFood(this, 'apple', 'C')">🍎 apple</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'water', 'U')">🥛 water</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'banana', 'C')">🍌 banana</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'milk', 'U')">🥛 milk</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'cookie', 'C')">🍪 cookie</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'cheese', 'U')">🧀 cheese</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'sandwich', 'C')">🥪 sandwich</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'juice', 'U')">🧃 juice</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'egg', 'C')">🥚 egg</button>
-        <button class="food-pill-btn" onclick="sortFood(this, 'bread', 'U')">🍞 bread</button>
-      </div>
-
+      <div class="food-pool" id="food-pool"></div>
       <div class="sorting-game">
         <div class="basket-col basket-c">
           <div class="basket-header">🍎 COUNTABLE (1, 2, 3...)</div>
@@ -1160,50 +933,24 @@
       </div>
     </div>
 
-    <!-- Can / Can't -->
     <div class="card">
       <div class="card-banner">
-        <span class="card-badge" style="background:#9333ea;">2</span>
+        <span class="card-badge">2</span>
+        <h2 class="card-title">Dandy's Breakfast: "A", "An" or "Some"?</h2>
+      </div>
+      <div id="container-s3-aAnSome" class="item-list"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#9333ea;">3</span>
         <h2 class="card-title">Can / Can't: "Cows Can't Dance!"</h2>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Cows (can / can\'t) dance the tango! 🐮 💃')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Cows (can / can't) dance the tango! 🐮 💃</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">can't (Cows can't dance!)</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Flutter the Toon (can / can\'t) fly high in the blue sky. 🦋')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Flutter the Toon (can / can't) fly high in the blue sky. 🦋</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">can</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">can't</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Pebble (can / can\'t) bark like a happy puppy. 🐶')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> Pebble (can / can't) bark like a happy puppy. 🐶</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">can</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">can't</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'A little goldfish (can / can\'t) climb a tall tree. 🐟')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> A little goldfish (can / can't) climb a tall tree. 🐟</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">can't</button>
-        </div>
-      </div>
+      <div id="container-s3-canCant" class="item-list"></div>
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- STAGE 4: Actions & Present Continuous          -->
-  <!-- ============================================== -->
+  <!-- STAGE 4 -->
   <section class="stage-view" id="stage-4">
     <div class="rule-pill" style="background:#f3e8ff; border-color:#c084fc; color:#6b21a8;">
       🌙 <strong>Unit 8 & 9:</strong> What are Astro, Goob & Friends doing right now? (am / is / are + verb-ing)
@@ -1214,170 +961,50 @@
         <span class="card-badge" style="background:#8b5cf6;">1</span>
         <h2 class="card-title">Goob's "-ing" Transformer!</h2>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'read + ing ➔')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> read + ing ➔</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">reading</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">readding</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'dance + ing ➔ (drop the -e!)')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> dance + ing ➔ (drop the -e!)</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">dancing</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">danceing</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'swim + ing ➔ (double the -m!)')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> swim + ing ➔ (double the -m!)</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">swimming</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">swiming</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'run + ing ➔ (double the -n!)')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> run + ing ➔ (double the -n!)</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">running</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">runing</button>
-        </div>
-      </div>
+      <div id="container-s4-ing" class="item-list"></div>
     </div>
 
-    <!-- Complete with am/is/are + ing -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge">2</span>
-        <h2 class="card-title">Happening RIGHT NOW!</h2>
+        <h2 class="card-title">Happening RIGHT NOW! (am / is / are + verb-ing)</h2>
       </div>
+      <div id="container-s4-continuous" class="item-list"></div>
+    </div>
 
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Look! Astro ______ (sleep) with his starry nightcap.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Look! Astro ______ (sleep) with his starry nightcap.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">is sleeping</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">are sleeping</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">sleeps</button>
-        </div>
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#ea580c;">3</span>
+        <h2 class="card-title">Routine (Every day) OR Happening NOW?</h2>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Goob ______ (hug) all his Toon friends warmly.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Goob ______ (hug) all his Toon friends warmly.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">is hugging</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">are hugging</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy and Boxten ______ (play) in the corridor.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> Poppy and Boxten ______ (play) in the corridor.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">is playing</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">are playing</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Sofía ______ (study) English with her family right now!')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> Sofía ______ (study) English with her family right now!</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">is studying</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">are studying</button>
-        </div>
-      </div>
+      <div id="container-s4-routine" class="item-list"></div>
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- STAGE 5: Final Champion Exam                   -->
-  <!-- ============================================== -->
+  <!-- STAGE 5 -->
   <section class="stage-view" id="stage-5">
     <div class="rule-pill" style="background:#ecfdf5; border-color:#10b981; color:#065f46;">
       🏆 <strong>Grand Champion Exam:</strong> Show Miss Vane & Miss Ani everything you know!
     </div>
 
-    <!-- Reading Story -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge">A</span>
         <h2 class="card-title">A Sunny Picnic in Dandy's Park</h2>
       </div>
-
       <div class="story-box">
         "It is Wednesday. Timmy, <span class="dyn-student-name">Sofía</span> and their Toon friends are having a picnic in the nature park. There are <strong>five tall green trees</strong> near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: 'I love nature!'"
+        <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, 'It is Wednesday. Timmy and their Toon friends are having a picnic in the nature park. There are five tall green trees near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: I love nature!')">🎧 Escuchar Cuento (Listen)</button></div>
       </div>
-      <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, '&quot;It is Wednesday. Timmy,  Sofía  and their Toon friends are having a picnic in the nature park. There are  five tall green trees  near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: \'I love nature!\'&quot;')">🎧 Escuchar Cuento Completo (Listen)</button></div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Where are they having a picnic?')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Where are they having a picnic?</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">In the library</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">In the nature park</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">At school</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'How many tall green trees are there?')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> How many tall green trees are there?</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">Three</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">Four</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">Five</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'What is Flutter doing?')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> What is Flutter doing?</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">Flying</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">Sleeping</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">Dancing</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'What is Pebble doing on the grass?')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> What is Pebble doing on the grass?</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">Eating</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">Running</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">Swimming</button>
-        </div>
-      </div>
+      <div id="container-s5-story" class="item-list"></div>
     </div>
 
-    <!-- Final Trivia -->
     <div class="card">
       <div class="card-banner">
         <span class="card-badge" style="background:#f59e0b;">B</span>
         <h2 class="card-title">Grammar & Colours Champion Quest</h2>
       </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Water, juice and milk are...')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Water, juice and milk are...</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, false)">countable</button>
-          <button class="choice-btn" onclick="checkChoice(this, true)">uncountable</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Cows ______ dance, but they can walk.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Cows ______ dance, but they can walk.</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">can't</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
-        </div>
-      </div>
-
-      <div class="question-item">
-        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Colour mix: Blue + Yellow =')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> Colour mix: Blue + Yellow =</div>
-        <div class="choices-grid">
-          <button class="choice-btn" onclick="checkChoice(this, true)">Green</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">Purple</button>
-          <button class="choice-btn" onclick="checkChoice(this, false)">Orange</button>
-        </div>
-      </div>
+      <div id="container-s5-trivia" class="item-list"></div>
     </div>
 
     <!-- Final Certificate Card -->
@@ -1402,34 +1029,377 @@
 </div>
 
 <script>
-  let currentStage = 1;
-  let score = 0;
-  const answered = new Set();
+  // ==========================================
+  // QUESTION BANK: 80+ Test Cases Across Units
+  // ==========================================
+  const QUESTION_BANK = {
+    s1_vocab: [
+      { prompt: "My mom's father is my...", correct: "grandfather", wrong: ["brother", "cousin"] },
+      { prompt: "My uncle and aunt's son is my...", correct: "cousin", wrong: ["sister", "grandfather"] },
+      { prompt: "Poppy keeps her pencils and rubber inside her...", correct: "pencil case", wrong: ["playground", "library"] },
+      { prompt: "When I make a mistake with a pencil, I erase it with my...", correct: "rubber (eraser)", wrong: ["sharpener", "ruler"] },
+      { prompt: "During break time, we run and play with our new friends in the...", correct: "playground", wrong: ["canteen", "library"] },
+      { prompt: "We read quiet and exciting story books in the school...", correct: "library", wrong: ["gym", "pencil case"] },
+      { prompt: "My father's sister is my...", correct: "aunt", wrong: ["brother", "grandmother"] },
+      { prompt: "My mother's brother is my...", correct: "uncle", wrong: ["sister", "cousin"] },
+      { prompt: "My dad's mother is my...", correct: "grandmother", wrong: ["sister", "aunt"] },
+      { prompt: "I sharpen my blunt pencils with a...", correct: "sharpener", wrong: ["rubber", "ruler"] },
+      { prompt: "We draw and paint colorful pictures in the...", correct: "art room", wrong: ["canteen", "library"] },
+      { prompt: "We eat our delicious lunch with friends in the...", correct: "canteen", wrong: ["playground", "gym"] },
+      { prompt: "I carry my school books on my back inside my...", correct: "schoolbag", wrong: ["pencil case", "ruler"] }
+    ],
+    s1_presentSimple: [
+      { prompt: "Dandy (walk / walks) around Gardenview every morning.", correct: "walks", wrong: ["walk"] },
+      { prompt: "Poppy and Boxten (play / plays) games in the playground.", correct: "play", wrong: ["plays"] },
+      { prompt: "The English teacher (write / writes) new words on the board.", correct: "writes", wrong: ["write"] },
+      { prompt: "Sofía and her sister (eat / eats) cereal before school.", correct: "eat", wrong: ["eats"] },
+      { prompt: "The friendly hare (run / runs) very fast in the green grass.", correct: "runs", wrong: ["run"] },
+      { prompt: "Astro (sleep / sleeps) with his nightcap during the day.", correct: "sleeps", wrong: ["sleep"] },
+      { prompt: "Goob (give / gives) warm hugs to all his friends.", correct: "gives", wrong: ["give"] },
+      { prompt: "Timmy (brush / brushes) his teeth every morning.", correct: "brushes", wrong: ["brush"] },
+      { prompt: "We (read / reads) storybooks together in English class.", correct: "read", wrong: ["reads"] },
+      { prompt: "My brother (ride / rides) his red bike in the park.", correct: "rides", wrong: ["ride"] },
+      { prompt: "Mrs. Bee (fly / flies) to the flowers to make honey.", correct: "flies", wrong: ["fly"] },
+      { prompt: "The cows (eat / eats) fresh grass on the farm.", correct: "eat", wrong: ["eats"] },
+      { prompt: "Pebble the puppy (bark / barks) happily when he plays.", correct: "barks", wrong: ["bark"] }
+    ],
+    s1_dontDoesnt: [
+      { prompt: "Timmy ______ (don't / doesn't) drink cold soda at night.", correct: "doesn't", wrong: ["don't"] },
+      { prompt: "The Toons ______ (don't / doesn't) go to school on Sundays.", correct: "don't", wrong: ["doesn't"] },
+      { prompt: "Pebble ______ (don't / doesn't) climb tall trees.", correct: "doesn't", wrong: ["don't"] },
+      { prompt: "We ______ (don't / doesn't) eat dinner in the classroom.", correct: "don't", wrong: ["doesn't"] },
+      { prompt: "Astro ______ (don't / doesn't) like waking up early.", correct: "doesn't", wrong: ["don't"] },
+      { prompt: "______ your brother ride a bike in the park? — Yes, he does!", correct: "Does", wrong: ["Do"] },
+      { prompt: "______ you like playing in Dandy's World? — Yes, I do!", correct: "Do", wrong: ["Does"] },
+      { prompt: "______ Dandy sell items in his shop? — Yes, he does!", correct: "Does", wrong: ["Do"] },
+      { prompt: "______ cows dance the tango? — No, they don't!", correct: "Do", wrong: ["Does"] },
+      { prompt: "______ Flutter fly in the garden? — Yes, she does!", correct: "Does", wrong: ["Do"] }
+    ],
+    s1_story: [
+      { prompt: "Poppy's pencil case is red.", correct: "False [F] (It is blue!)", wrong: ["True [T]"], sentence: "False! Poppy's pencil case is blue." },
+      { prompt: "On the desk are 3 yellow pencils.", correct: "True [T]", wrong: ["False [F]"], sentence: "True! On the desk there are three yellow pencils." },
+      { prompt: "They read stories in the library.", correct: "True [T]", wrong: ["False [F]"], sentence: "True! They read stories in the library." },
+      { prompt: "They play games in the canteen.", correct: "False [F] (In the playground!)", wrong: ["True [T]"], sentence: "False! They play games in the playground." },
+      { prompt: "Timmy and Poppy are in 3rd grade.", correct: "True [T]", wrong: ["False [F]"], sentence: "True! Timmy and Poppy are in third grade." }
+    ],
+    s2_thereIsAre: [
+      { prompt: "______ a golden sun shining in the blue sky.", correct: "There is", wrong: ["There are"] },
+      { prompt: "______ five tall trees in the peaceful forest.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ twelve colourful butterflies flying near Flutter.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ a cute pet rock dog named Pebble on the grass.", correct: "There is", wrong: ["There are"] },
+      { prompt: "______ three green frogs resting on the big rock.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ a big blue river flowing through the park.", correct: "There is", wrong: ["There are"] },
+      { prompt: "______ twenty sweet bees around Mrs. Bee's hive.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ one shiny red apple on tree number 1.", correct: "There is", wrong: ["There are"] },
+      { prompt: "______ four white clouds in the sunny sky.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ a friendly hare hiding in the nature park.", correct: "There is", wrong: ["There are"] }
+    ],
+    s2_prepositions: [
+      { prompt: "Pebble is hiding ______ the big tree trunk.", correct: "behind", wrong: ["in", "between"] },
+      { prompt: "The fish is swimming ______ the clear river water.", correct: "in", wrong: ["on", "behind"] },
+      { prompt: "Pebble is sleeping ______ the wooden desk.", correct: "under", wrong: ["between", "on"] },
+      { prompt: "Flutter is flying ______ two pink flowers.", correct: "between", wrong: ["next to", "under"] },
+      { prompt: "The bird is sitting ______ the green tree branch.", correct: "on", wrong: ["under", "in front of"] },
+      { prompt: "The schoolbag is resting ______ the chair.", correct: "next to", wrong: ["between", "in"] },
+      { prompt: "Mrs. Bee is flying ______ the colourful flowers.", correct: "over", wrong: ["under", "behind"] },
+      { prompt: "The egg is safe ______ the bird's nest.", correct: "in", wrong: ["behind", "between"] },
+      { prompt: "Goob is standing ______ Dandy and Poppy.", correct: "between", wrong: ["under", "on"] },
+      { prompt: "The little rabbit is resting ______ the warm sun.", correct: "under", wrong: ["between", "behind"] }
+    ],
+    s3_aAnSome: [
+      { prompt: "Sprout would like ______ orange, please.", correct: "an", wrong: ["a", "some"] },
+      { prompt: "Can I have ______ glass of milk?", correct: "a", wrong: ["an", "some"] },
+      { prompt: "There is ______ fresh bread in Dandy's shop.", correct: "some", wrong: ["a", "an"] },
+      { prompt: "Sofía is eating ______ sweet red apple.", correct: "a", wrong: ["an", "some"] },
+      { prompt: "There is ______ delicious yellow cheese in the fridge.", correct: "some", wrong: ["a", "an"] },
+      { prompt: "Timmy wants ______ sweet cookies for snack.", correct: "some", wrong: ["a", "an"] },
+      { prompt: "Can I eat ______ banana, please?", correct: "a", wrong: ["an", "some"] },
+      { prompt: "Would you like ______ cold water?", correct: "some", wrong: ["a", "an"] },
+      { prompt: "There is ______ egg in the basket.", correct: "an", wrong: ["a", "some"] },
+      { prompt: "We need ______ orange juice for breakfast.", correct: "some", wrong: ["a", "an"] }
+    ],
+    s3_canCant: [
+      { prompt: "Cows (can / can't) dance the tango! 🐮 💃", correct: "can't", wrong: ["can"] },
+      { prompt: "A cow (can / can't) give milk and eat grass. 🥛", correct: "can", wrong: ["can't"] },
+      { prompt: "Flutter the Toon (can / can't) fly high in the sky. 🦋", correct: "can", wrong: ["can't"] },
+      { prompt: "A little goldfish (can / can't) climb a tall tree. 🐟", correct: "can't", wrong: ["can"] },
+      { prompt: "Pebble (can / can't) bark like a happy puppy. 🐶", correct: "can", wrong: ["can't"] },
+      { prompt: "Goob (can / can't) give big warm hugs! 🫂", correct: "can", wrong: ["can't"] },
+      { prompt: "A bird (can / can't) sing sweet songs in the tree. 🐦", correct: "can", wrong: ["can't"] },
+      { prompt: "Elephants (can / can't) jump over a tall house! 🐘", correct: "can't", wrong: ["can"] },
+      { prompt: "Sofía (can / can't) speak and write English! ⭐", correct: "can", wrong: ["can't"] },
+      { prompt: "A frog (can / can't) swim and jump very far. 🐸", correct: "can", wrong: ["can't"] }
+    ],
+    s4_ing: [
+      { prompt: "read + ing ➔", correct: "reading", wrong: ["readding", "readin"], sentence: "Read plus ing is reading." },
+      { prompt: "dance + ing ➔ (drop the -e!)", correct: "dancing", wrong: ["danceing", "dancin"], sentence: "Dance plus ing is dancing." },
+      { prompt: "swim + ing ➔ (double the -m!)", correct: "swimming", wrong: ["swiming", "swim"], sentence: "Swim plus ing is swimming." },
+      { prompt: "run + ing ➔ (double the -n!)", correct: "running", wrong: ["runing", "run"], sentence: "Run plus ing is running." },
+      { prompt: "play + ing ➔", correct: "playing", wrong: ["plaing", "playin"], sentence: "Play plus ing is playing." },
+      { prompt: "eat + ing ➔", correct: "eating", wrong: ["eatting", "eaten"], sentence: "Eat plus ing is eating." },
+      { prompt: "jump + ing ➔", correct: "jumping", wrong: ["jumpping", "jumpin"], sentence: "Jump plus ing is jumping." },
+      { prompt: "sleep + ing ➔", correct: "sleeping", wrong: ["sleepping", "sleep"], sentence: "Sleep plus ing is sleeping." }
+    ],
+    s4_continuous: [
+      { prompt: "Look! Astro ______ (sleep) with his starry nightcap.", correct: "is sleeping", wrong: ["are sleeping", "sleeps"] },
+      { prompt: "Goob ______ (hug) all his Toon friends warmly.", correct: "is hugging", wrong: ["are hugging", "hugs"] },
+      { prompt: "Poppy and Boxten ______ (play) in the corridor.", correct: "are playing", wrong: ["is playing", "play"] },
+      { prompt: "Sofía ______ (study) English with her family right now!", correct: "is studying", wrong: ["are studying", "studies"] },
+      { prompt: "The friendly hare ______ (jump) in the green grass.", correct: "is jumping", wrong: ["are jumping", "jump"] },
+      { prompt: "Dandy ______ (smile) and waving at his friends!", correct: "is smiling", wrong: ["are smiling", "smiles"] },
+      { prompt: "The birds ______ (sing) in the five tall trees right now.", correct: "are singing", wrong: ["is singing", "sings"] },
+      { prompt: "Lucas and Mia ______ (draw) colourful pictures in the art room.", correct: "are drawing", wrong: ["is drawing", "draws"] },
+      { prompt: "Pebble the puppy ______ (run) after a red ball.", correct: "is running", wrong: ["are running", "runs"] },
+      { prompt: "Mrs. Bee ______ (fly) over four yellow flowers.", correct: "is flying", wrong: ["are flying", "flies"] }
+    ],
+    s4_routine: [
+      { prompt: "Every morning, Poppy (walks / is walking) to school.", correct: "walks", wrong: ["is walking"] },
+      { prompt: "Listen! The little birds (sing / are singing) in the trees right now.", correct: "are singing", wrong: ["sing"] },
+      { prompt: "Timmy always (does / is doing) his homework in the afternoon.", correct: "does", wrong: ["is doing"] },
+      { prompt: "Look! Astro (sleeps / is sleeping) peacefully in his bed right now.", correct: "is sleeping", wrong: ["sleeps"] },
+      { prompt: "On Mondays, we (go / are going) to school by bus.", correct: "go", wrong: ["are going"] },
+      { prompt: "Shhh! Look! The baby (sleeps / is sleeping) in the bedroom right now.", correct: "is sleeping", wrong: ["sleeps"] },
+      { prompt: "Every day, Dandy (opens / is opening) his shop at 9:00 AM.", correct: "opens", wrong: ["is opening"] },
+      { prompt: "Right now, Sofía (reads / is reading) an exciting story.", correct: "is reading", wrong: ["reads"] }
+    ],
+    s5_story: [
+      { prompt: "Where are they having a picnic?", correct: "In the nature park", wrong: ["In the library", "At school"], sentence: "They are having a picnic in the nature park." },
+      { prompt: "How many tall green trees are there?", correct: "Five", wrong: ["Three", "Four"], sentence: "There are five tall green trees in the park." },
+      { prompt: "What is Flutter doing?", correct: "Flying", wrong: ["Sleeping", "Dancing"], sentence: "Flutter is flying between the flowers." },
+      { prompt: "What is Pebble doing on the grass?", correct: "Running", wrong: ["Eating", "Swimming"], sentence: "Pebble is running happily on the grass." },
+      { prompt: "What does Sprout have in his bag?", correct: "An apple, sandwich and juice", wrong: ["Only pizza", "Pencils and books"], sentence: "Sprout has an apple, a sandwich and juice in his bag." }
+    ],
+    s5_trivia: [
+      { prompt: "Boxten keeps his pencils in his...", correct: "pencil case", wrong: ["canteen", "river"], sentence: "Boxten keeps his pencils in his pencil case." },
+      { prompt: "______ seven butterflies flying in the nature park.", correct: "There are", wrong: ["There is", "Is there"], sentence: "There are seven butterflies flying in the nature park." },
+      { prompt: "Water, juice and milk are...", correct: "uncountable nouns", wrong: ["countable nouns", "prepositions"], sentence: "Water, juice and milk are uncountable nouns." },
+      { prompt: "Apples, bananas and cookies are...", correct: "countable nouns", wrong: ["uncountable nouns", "verbs"], sentence: "Apples, bananas and cookies are countable nouns." },
+      { prompt: "Cows ______ dance the tango, but they can walk.", correct: "can't", wrong: ["can", "are"], sentence: "Cows can't dance the tango, but they can walk." },
+      { prompt: "Look! Poppy ______ a storybook right now.", correct: "is reading", wrong: ["reads", "read"], sentence: "Look! Poppy is reading a storybook right now." },
+      { prompt: "Timmy ______ his teeth every morning.", correct: "brushes", wrong: ["brush", "is brushing"], sentence: "Timmy brushes his teeth every morning." },
+      { prompt: "Number 8 in English is written:", correct: "eight", wrong: ["eigh", "eigt"], sentence: "Number eight is written E-I-G-H-T." },
+      { prompt: "Number 12 in English is written:", correct: "twelve", wrong: ["twelv", "twelf"], sentence: "Number twelve is written T-W-E-L-V-E." },
+      { prompt: "Number 20 in English is written:", correct: "twenty", wrong: ["twente", "twenti"], sentence: "Number twenty is written T-W-E-N-T-Y." },
+      { prompt: "Color mix: Blue + Yellow =", correct: "Green", wrong: ["Purple", "Orange"], sentence: "Blue and yellow make green." },
+      { prompt: "Color mix: Red + Blue =", correct: "Purple", wrong: ["Green", "Yellow"], sentence: "Red and blue make purple." },
+      { prompt: "Where do we read quiet story books at school?", correct: "In the library", wrong: ["In the canteen", "In the gym"], sentence: "We read quiet story books in the library." }
+    ]
+  };
 
-  // Audio Synthesizer (Zero external dependencies)
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  // Supermarket Food Pool (20 foods)
+  const EXTENDED_FOOD_POOL = [
+    { name: "🍎 apple", type: "C" },
+    { name: "🥛 water", type: "U" },
+    { name: "🍌 banana", type: "C" },
+    { name: "🥛 milk", type: "U" },
+    { name: "🍪 cookie", type: "C" },
+    { name: "🧀 cheese", type: "U" },
+    { name: "🥪 sandwich", type: "C" },
+    { name: "🧃 juice", type: "U" },
+    { name: "🥚 egg", type: "C" },
+    { name: "🍞 bread", type: "U" },
+    { name: "🍊 orange", type: "C" },
+    { name: "🍓 strawberry", type: "C" },
+    { name: "🥞 pancake", type: "C" },
+    { name: "🥕 carrot", type: "C" },
+    { name: "🧁 muffin", type: "C" },
+    { name: "🥩 meat", type: "U" },
+    { name: "🍚 rice", type: "U" },
+    { name: "🍵 tea", type: "U" },
+    { name: "🥣 soup", type: "U" },
+    { name: "🧈 butter", type: "U" }
+  ];
+
+  // Helper shuffle
+  function shuffle(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // Build natural English sentence from prompt & answer
+  function buildFullSentence(prompt, correct) {
+    let p = prompt.trim();
+    // Strip emojis
+    p = p.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim();
+    const cleanCorrect = correct.replace(/\[.*?\]/g, '').trim();
+
+    if (cleanCorrect.toLowerCase().startsWith('true')) {
+      return p;
+    }
+    if (cleanCorrect.toLowerCase().startsWith('false')) {
+      return cleanCorrect.replace(/[()]/g, '').trim();
+    }
+
+    const c = cleanCorrect.replace(/\(.*?\)/g, '').trim();
+
+    if (p.includes('______')) {
+      const res = p.replace(/______\s*(\([^)]*\))?/g, ' ' + c + ' ');
+      return res.replace(/\s+/g, ' ').trim();
+    }
+
+    if (/\([^)]*\/[^)]*\)/.test(p)) {
+      const res = p.replace(/\([^)]*\/[^)]*\)/g, ' ' + c + ' ');
+      return res.replace(/\s+/g, ' ').trim();
+    }
+
+    if (p.endsWith('...')) {
+      return p.slice(0, -3).trim() + ' ' + c + '.';
+    }
+
+    if (p.includes('➔')) {
+      return c;
+    }
+
+    if (p.includes('?')) {
+      return `${p} ${c}`;
+    }
+
+    return `${p} ${c}`;
+  }
+
+  // Render question list
+  function renderQuestionGroup(containerId, pool, count = 4) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+
+    const selected = shuffle(pool).slice(0, count);
+    selected.forEach((q, idx) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-item";
+
+      const fullSentence = q.sentence || buildFullSentence(q.prompt, q.correct);
+      qDiv.dataset.fullSentence = fullSentence;
+
+      const promptDiv = document.createElement("div");
+      promptDiv.className = "q-prompt";
+
+      const ttsBtn = document.createElement("button");
+      ttsBtn.className = "btn-tts";
+      ttsBtn.title = "Listen / Escuchar";
+      ttsBtn.innerText = "🔊";
+      ttsBtn.onclick = function() {
+        const textToSpeak = qDiv.dataset.scored ? (qDiv.dataset.fullSentence || q.prompt) : q.prompt;
+        speakPrompt(this, textToSpeak);
+      };
+
+      const numSpan = document.createElement("span");
+      numSpan.className = "q-num";
+      numSpan.innerText = `${idx + 1}.`;
+
+      const textNode = document.createElement("span");
+      textNode.innerHTML = ` ${q.prompt.replace(/Sofía/g, '<span class="dyn-student-name">' + currentStudentName + '</span>')}`;
+
+      promptDiv.appendChild(ttsBtn);
+      promptDiv.appendChild(numSpan);
+      promptDiv.appendChild(textNode);
+
+      const choicesDiv = document.createElement("div");
+      choicesDiv.className = "choices-grid";
+
+      // Combine and shuffle choices
+      const allChoices = shuffle([
+        { text: q.correct, isCorrect: true },
+        ...q.wrong.map(w => ({ text: w, isCorrect: false }))
+      ]);
+
+      allChoices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.innerText = choice.text;
+        btn.onclick = function() { checkChoice(this, choice.isCorrect, fullSentence); };
+        choicesDiv.appendChild(btn);
+      });
+
+      qDiv.appendChild(promptDiv);
+      qDiv.appendChild(choicesDiv);
+      container.appendChild(qDiv);
+    });
+  }
+
+  // Render food pool
+  function renderFoodPool() {
+    const poolDiv = document.getElementById("food-pool");
+    const basketC = document.getElementById("basket-c-items");
+    const basketU = document.getElementById("basket-u-items");
+    if (!poolDiv) return;
+
+    poolDiv.innerHTML = "";
+    if (basketC) basketC.innerHTML = "";
+    if (basketU) basketU.innerHTML = "";
+
+    // Pick 5 Countable and 5 Uncountable
+    const countables = shuffle(EXTENDED_FOOD_POOL.filter(f => f.type === "C")).slice(0, 5);
+    const uncountables = shuffle(EXTENDED_FOOD_POOL.filter(f => f.type === "U")).slice(0, 5);
+    const chosen = shuffle([...countables, ...uncountables]);
+
+    chosen.forEach(food => {
+      const btn = document.createElement("button");
+      btn.className = "food-pill-btn";
+      btn.innerText = food.name;
+      btn.onclick = function() { sortFood(this, food.name, food.type); };
+      poolDiv.appendChild(btn);
+    });
+  }
+
+  // Regenerate all dynamic sections
+  function regenerateAllQuestions() {
+    renderQuestionGroup("container-s1-vocab", QUESTION_BANK.s1_vocab, 4);
+    renderQuestionGroup("container-s1-presentSimple", QUESTION_BANK.s1_presentSimple, 4);
+    renderQuestionGroup("container-s1-dontDoesnt", QUESTION_BANK.s1_dontDoesnt, 4);
+    renderQuestionGroup("container-s1-story", QUESTION_BANK.s1_story, 4);
+
+    renderQuestionGroup("container-s2-thereIsAre", QUESTION_BANK.s2_thereIsAre, 4);
+    renderQuestionGroup("container-s2-prepositions", QUESTION_BANK.s2_prepositions, 4);
+
+    renderFoodPool();
+    renderQuestionGroup("container-s3-aAnSome", QUESTION_BANK.s3_aAnSome, 4);
+    renderQuestionGroup("container-s3-canCant", QUESTION_BANK.s3_canCant, 4);
+
+    renderQuestionGroup("container-s4-ing", QUESTION_BANK.s4_ing, 4);
+    renderQuestionGroup("container-s4-continuous", QUESTION_BANK.s4_continuous, 4);
+    renderQuestionGroup("container-s4-routine", QUESTION_BANK.s4_routine, 4);
+
+    renderQuestionGroup("container-s5-story", QUESTION_BANK.s5_story, 4);
+    renderQuestionGroup("container-s5-trivia", QUESTION_BANK.s5_trivia, 6);
+
+    playTone(587.33, 'triangle', 0.15, 0);
+  }
+
+  // Audio Synthesizer
+  let audioCtx;
+  function getAudioCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
 
   function playTone(freq, type, duration, delay=0) {
     setTimeout(() => {
       try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
         osc.type = type;
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(ctx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + duration);
+        osc.stop(ctx.currentTime + duration);
       } catch(e) {}
     }, delay);
   }
 
   function playCorrectSound() {
-    playTone(523.25, 'sine', 0.12, 0);   // C5
-    playTone(659.25, 'sine', 0.12, 80);  // E5
-    playTone(783.99, 'sine', 0.25, 160); // G5
+    playTone(523.25, 'sine', 0.12, 0);
+    playTone(659.25, 'sine', 0.12, 80);
+    playTone(783.99, 'sine', 0.25, 160);
   }
 
   function playWrongSound() {
@@ -1448,6 +1418,7 @@
   // Confetti Engine
   function launchConfetti() {
     const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -1467,7 +1438,6 @@
       });
     }
 
-    let animationFrame;
     let frames = 0;
     function render() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1487,7 +1457,7 @@
 
       frames++;
       if (frames < 120) {
-        animationFrame = requestAnimationFrame(render);
+        requestAnimationFrame(render);
       } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
@@ -1495,17 +1465,23 @@
     render();
   }
 
-  // Answer Checker
-  function checkChoice(btn, isCorrect, wordLabel) {
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
+  // Auto-read full sentence toggle
+  let autoReadSentence = true;
+  function toggleAutoRead() {
+    autoReadSentence = !autoReadSentence;
+    document.getElementById('autoread-icon').innerText = autoReadSentence ? '🔊' : '🔇';
+    document.getElementById('autoread-label').innerText = autoReadSentence ? 'Frase: ON' : 'Frase: OFF';
+    playTone(autoReadSentence ? 660 : 440, 'sine', 0.1, 0);
+  }
 
+  // Score & Choice Checking
+  let score = 0;
+  function checkChoice(btn, isCorrect, fullSentence) {
+    getAudioCtx();
     const parent = btn.closest('.question-item');
     if (!parent) return;
 
-    const allBtns = parent.querySelectorAll('.choice-btn');
-    allBtns.forEach(b => {
+    parent.querySelectorAll('.choice-btn').forEach(b => {
       b.classList.remove('selected-correct', 'selected-wrong');
     });
 
@@ -1518,19 +1494,51 @@
         document.getElementById('score-display').innerText = `⭐ ${score} pts`;
         launchConfetti();
       }
+
+      // Sentence feedback & auto-read
+      const sentence = fullSentence || parent.dataset.fullSentence;
+      if (sentence) {
+        let feedback = parent.querySelector('.sentence-feedback');
+        if (!feedback) {
+          feedback = document.createElement('div');
+          feedback.className = 'sentence-feedback';
+          parent.appendChild(feedback);
+        }
+
+        const displaySentence = sentence.replace(/Sofía/g, currentStudentName);
+        feedback.innerHTML = '';
+
+        const fbBtn = document.createElement('button');
+        fbBtn.className = 'btn-tts';
+        fbBtn.title = 'Listen again / Escuchar frase';
+        fbBtn.innerText = '🔊';
+        fbBtn.onclick = function() {
+          speakPrompt(this, displaySentence);
+        };
+
+        const fbText = document.createElement('span');
+        fbText.className = 'feedback-text';
+        fbText.innerText = `“${displaySentence}”`;
+
+        feedback.appendChild(fbBtn);
+        feedback.appendChild(fbText);
+        feedback.classList.add('show');
+
+        // Automatically read aloud with speech synthesis after chime if autoReadSentence is true
+        if (autoReadSentence) {
+          setTimeout(() => {
+            speakPrompt(fbBtn, displaySentence);
+          }, 320);
+        }
+      }
     } else {
       btn.classList.add('selected-wrong');
       playWrongSound();
     }
   }
 
-  // Supermarket Sorting
-  const sortedCounts = { C: 0, U: 0 };
   function sortFood(btn, name, type) {
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-
+    getAudioCtx();
     const targetList = type === 'C' ? document.getElementById('basket-c-items') : document.getElementById('basket-u-items');
     const item = document.createElement('div');
     item.className = 'sorted-item';
@@ -1540,6 +1548,13 @@
     btn.style.display = 'none';
     playCorrectSound();
 
+    const cleanFoodName = name.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').trim();
+    if (autoReadSentence) {
+      setTimeout(() => {
+        speakPrompt(null, cleanFoodName);
+      }, 200);
+    }
+
     score++;
     document.getElementById('score-display').innerText = `⭐ ${score} pts`;
 
@@ -1548,7 +1563,96 @@
     }
   }
 
+  // TTS Engine
+  let ttsRate = 0.88;
+  let isSlow = false;
+  function toggleTtsSpeed() {
+    isSlow = !isSlow;
+    ttsRate = isSlow ? 0.72 : 0.88;
+    document.getElementById('speed-icon').innerText = isSlow ? '🐢' : '🐰';
+    document.getElementById('speed-label').innerText = isSlow ? 'Despacio' : 'Normal';
+    playTone(isSlow ? 440 : 660, 'sine', 0.1, 0);
+  }
+
+  function speakPrompt(btn, text, lang = 'en-US') {
+    if (!('speechSynthesis' in window)) {
+      alert("Tu navegador no soporta lectura de voz.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    document.querySelectorAll('.btn-tts, .btn-listen-story').forEach(b => b.classList.remove('speaking'));
+
+    let clean = text.replace(/<[^>]*>/g, ' ').replace(/______/g, 'blank');
+    clean = clean.replace(/Sofía/g, currentStudentName);
+
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = lang;
+    utterance.rate = ttsRate;
+    utterance.pitch = 1.05;
+
+    const voices = window.speechSynthesis.getVoices();
+    const bestVoice = voices.find(v => v.lang.startsWith(lang.slice(0, 2)) && 
+      (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Siri')));
+    if (bestVoice) utterance.voice = bestVoice;
+
+    if (btn) {
+      btn.classList.add('speaking');
+      utterance.onend = () => btn.classList.remove('speaking');
+      utterance.onerror = () => btn.classList.remove('speaking');
+    }
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Student Name
+  let currentStudentName = localStorage.getItem('dandy_student_name') || 'Sofía';
+  function applyStudentName(name) {
+    if (!name || !name.trim()) name = 'Sofía';
+    name = name.trim();
+    currentStudentName = name;
+    localStorage.setItem('dandy_student_name', name);
+
+    document.getElementById('student-name-header').innerText = name;
+    document.querySelectorAll('.dyn-student-name').forEach(el => {
+      el.innerText = name;
+    });
+
+    // Update displayed sentence feedback
+    document.querySelectorAll('.question-item').forEach(qDiv => {
+      const fb = qDiv.querySelector('.sentence-feedback');
+      const origSentence = qDiv.dataset.fullSentence;
+      if (fb && origSentence) {
+        const displaySentence = origSentence.replace(/Sofía/g, currentStudentName);
+        const fbText = fb.querySelector('.feedback-text');
+        if (fbText) fbText.innerText = `“${displaySentence}”`;
+        const fbBtn = fb.querySelector('.btn-tts');
+        if (fbBtn) {
+          fbBtn.onclick = function() {
+            speakPrompt(this, displaySentence);
+          };
+        }
+      }
+    });
+
+    document.title = `${name} & Dandy's World - English Review`;
+  }
+
+  function openNameModal() {
+    const modal = document.getElementById('name-modal');
+    const input = document.getElementById('student-name-input');
+    input.value = currentStudentName;
+    modal.classList.add('show');
+    setTimeout(() => input.focus(), 100);
+  }
+
+  function saveStudentName() {
+    const input = document.getElementById('student-name-input');
+    applyStudentName(input.value);
+    document.getElementById('name-modal').classList.remove('show');
+    playTone(659.25, 'sine', 0.15, 0);
+  }
+
   // Stage Switcher
+  let currentStage = 1;
   function switchStage(stageNum) {
     currentStage = stageNum;
     document.querySelectorAll('.stage-view').forEach(s => s.classList.remove('active'));
@@ -1569,107 +1673,21 @@
       nextBtn.innerText = 'Siguiente ➡️';
       nextBtn.onclick = nextStage;
     }
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function nextStage() {
-    if (currentStage < 5) switchStage(currentStage + 1);
-  }
+  function nextStage() { if (currentStage < 5) switchStage(currentStage + 1); }
+  function prevStage() { if (currentStage > 1) switchStage(currentStage - 1); }
 
-  function prevStage() {
-    if (currentStage > 1) switchStage(currentStage - 1);
-  }
-
-  
-  
-  // Text-To-Speech (TTS) Engine
-  let ttsRate = 0.88; // Default clear speed for 8-year-olds
-  let isSlow = false;
-
-  function toggleTtsSpeed() {
-    isSlow = !isSlow;
-    ttsRate = isSlow ? 0.72 : 0.88;
-    document.getElementById('speed-icon').innerText = isSlow ? '🐢' : '🐰';
-    document.getElementById('speed-label').innerText = isSlow ? 'Despacio' : 'Normal';
-    playTone(isSlow ? 440 : 660, 'sine', 0.1, 0);
-  }
-
-  function speakPrompt(btn, text, lang = 'en-US') {
-    if (!('speechSynthesis' in window)) {
-      alert("Tu navegador no soporta lectura de voz.");
-      return;
-    }
-
-    // Stop any ongoing speech
-    window.speechSynthesis.cancel();
-    document.querySelectorAll('.btn-tts, .btn-listen-story').forEach(b => b.classList.remove('speaking'));
-
-    // Clean text and replace dynamic student name
-    let clean = text.replace(/<[^>]*>/g, ' ').replace(/______/g, 'blank');
-    clean = clean.replace(/Sofía/g, currentStudentName);
-
-    const utterance = new SpeechSynthesisUtterance(clean);
-    utterance.lang = lang;
-    utterance.rate = ttsRate;
-    utterance.pitch = 1.05;
-
-    // Pick best natural voice if available
-    const voices = window.speechSynthesis.getVoices();
-    const bestVoice = voices.find(v => v.lang.startsWith(lang.slice(0, 2)) && 
-      (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Siri')));
-    if (bestVoice) utterance.voice = bestVoice;
-
-    if (btn) {
-      btn.classList.add('speaking');
-      utterance.onend = () => btn.classList.remove('speaking');
-      utterance.onerror = () => btn.classList.remove('speaking');
-    }
-
-    window.speechSynthesis.speak(utterance);
-  }
-
-  // Student Name Manager
-  let currentStudentName = localStorage.getItem('dandy_student_name') || 'Sofía';
-
-  function applyStudentName(name) {
-    if (!name || !name.trim()) name = 'Sofía';
-    name = name.trim();
-    currentStudentName = name;
-    localStorage.setItem('dandy_student_name', name);
-
-    document.getElementById('student-name-header').innerText = name;
-    document.querySelectorAll('.dyn-student-name').forEach(el => {
-      el.innerText = name;
-    });
-    document.title = `${name} & Dandy's World - English Review`;
-  }
-
-  function openNameModal() {
-    const modal = document.getElementById('name-modal');
-    const input = document.getElementById('student-name-input');
-    input.value = currentStudentName;
-    modal.classList.add('show');
-    setTimeout(() => input.focus(), 100);
-  }
-
-  function saveStudentName() {
-    const input = document.getElementById('student-name-input');
-    applyStudentName(input.value);
-    document.getElementById('name-modal').classList.remove('show');
-    playTone(659.25, 'sine', 0.15, 0);
-  }
-
-  // Check if first time or prompt
+  // Init
   window.addEventListener('DOMContentLoaded', () => {
     applyStudentName(currentStudentName);
+    switchStage(1);
+    regenerateAllQuestions();
     if (!localStorage.getItem('dandy_student_name')) {
       setTimeout(openNameModal, 400);
     }
   });
-
-  // Init
-  switchStage(1);
 </script>
 </body>
 </html>
