@@ -677,6 +677,81 @@
     font-size: 0.75rem;
   }
 
+
+  /* TTS Speaker Buttons */
+  .btn-tts {
+    background: #e0f2fe;
+    border: 1.8px solid #7dd3fc;
+    color: #0369a1;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.15s;
+    padding: 0;
+    flex-shrink: 0;
+    vertical-align: middle;
+    margin-right: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .btn-tts:active {
+    transform: scale(0.9);
+  }
+
+  .btn-tts.speaking {
+    background: #fef08a !important;
+    border-color: #eab308 !important;
+    animation: pulseSpeaking 0.6s infinite alternate;
+  }
+
+  @keyframes pulseSpeaking {
+    from { transform: scale(1); box-shadow: 0 0 0 rgba(234,179,8,0.3); }
+    to { transform: scale(1.15); box-shadow: 0 0 8px rgba(234,179,8,0.7); }
+  }
+
+  .btn-listen-story {
+    background: #ffffff;
+    border: 1.8px solid #10b981;
+    color: #047857;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    transition: all 0.15s;
+  }
+
+  .btn-listen-story:active {
+    transform: scale(0.95);
+    background: #ecfdf5;
+  }
+
+  .speed-toggle-btn {
+    background: #ffffff;
+    border: 1.8px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    user-select: none;
+  }
+
 </style>
 </head>
 <body>
@@ -717,6 +792,10 @@
         <span id="student-name-header">Sofía</span>
         <span class="btn-change-icon">✏️</span>
       </div>
+      <button class="speed-toggle-btn" id="speed-toggle" onclick="toggleTtsSpeed()" title="Velocidad de voz">
+        <span id="speed-icon">🐰</span>
+        <span id="speed-label">Normal</span>
+      </button>
       <div class="score-badge" id="score-display">⭐ 0 / 20</div>
       <a href="/static/Repaso_Ingles_Sofia_3er_Grado.pdf" target="_blank" class="btn-pdf">
         🖨️ PDF (5 Págs)
@@ -765,7 +844,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">a.</span> My mom's father is my...</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'My mom\'s father is my...')" title="Listen / Escuchar">🔊</button><span class="q-num">a.</span> My mom's father is my...</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">grandfather</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">brother</button>
@@ -774,7 +853,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">b.</span> My uncle and aunt's son is my...</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'My uncle and aunt\'s son is my...')" title="Listen / Escuchar">🔊</button><span class="q-num">b.</span> My uncle and aunt's son is my...</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">sister</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">cousin</button>
@@ -783,7 +862,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">c.</span> Poppy keeps her pencils, ruler and rubber neatly inside her...</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy keeps her pencils, ruler and rubber neatly inside her...')" title="Listen / Escuchar">🔊</button><span class="q-num">c.</span> Poppy keeps her pencils, ruler and rubber neatly inside her...</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">playground</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">pencil case</button>
@@ -792,7 +871,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">d.</span> When I make a mistake with a pencil, I erase it with my...</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'When I make a mistake with a pencil, I erase it with my...')" title="Listen / Escuchar">🔊</button><span class="q-num">d.</span> When I make a mistake with a pencil, I erase it with my...</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">rubber (eraser)</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">sharpener</button>
@@ -801,7 +880,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">e.</span> During playtime, we run and play with new friends in the...</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'During playtime, we run and play with new friends in the...')" title="Listen / Escuchar">🔊</button><span class="q-num">e.</span> During playtime, we run and play with new friends in the...</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">canteen</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">playground</button>
@@ -819,7 +898,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> Dandy (walk / walks) to school every morning at 8:00 AM.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Dandy (walk / walks) to school every morning at 8:00 AM.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Dandy (walk / walks) to school every morning at 8:00 AM.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">walk</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">walks</button>
@@ -827,7 +906,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> Poppy and Boxten (play / plays) in the schoolyard.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy and Boxten (play / plays) in the schoolyard.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Poppy and Boxten (play / plays) in the schoolyard.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">play</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">plays</button>
@@ -835,7 +914,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> The English teacher (write / writes) new words on the board.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'The English teacher (write / writes) new words on the board.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> The English teacher (write / writes) new words on the board.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">write</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">writes</button>
@@ -843,7 +922,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">4.</span> <span class="dyn-student-name">Sofía</span> and her sister (eat / eats) breakfast before school.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '<span class=&quot;dyn-student-name&quot;>Sofía</span> and her sister (eat / eats) breakfast before school.')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> <span class="dyn-student-name">Sofía</span> and her sister (eat / eats) breakfast before school.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">eat</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">eats</button>
@@ -859,7 +938,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">a.</span> Timmy ______ (don't / doesn't) drink cold soda at night.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Timmy ______ (don\'t / doesn\'t) drink cold soda at night.')" title="Listen / Escuchar">🔊</button><span class="q-num">a.</span> Timmy ______ (don't / doesn't) drink cold soda at night.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">don't</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">doesn't</button>
@@ -867,7 +946,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">b.</span> The Toons ______ (don't / doesn't) go to school on Sundays.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'The Toons ______ (don\'t / doesn\'t) go to school on Sundays.')" title="Listen / Escuchar">🔊</button><span class="q-num">b.</span> The Toons ______ (don't / doesn't) go to school on Sundays.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">don't</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">doesn't</button>
@@ -875,7 +954,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">c.</span> ______ your brother ride a bike in the park? — Yes, he does!</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ your brother ride a bike in the park? — Yes, he does!')" title="Listen / Escuchar">🔊</button><span class="q-num">c.</span> ______ your brother ride a bike in the park? — Yes, he does!</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">Do</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">Does</button>
@@ -883,7 +962,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">d.</span> ______ you like playing in Dandy's World, <span class="dyn-student-name">Sofía</span>? — Yes, I do!</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ you like playing in Dandy\'s World, <span class=&quot;dyn-student-name&quot;>Sofía</span>? — Yes, I do!')" title="Listen / Escuchar">🔊</button><span class="q-num">d.</span> ______ you like playing in Dandy's World, <span class="dyn-student-name">Sofía</span>? — Yes, I do!</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">Do</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">Does</button>
@@ -902,9 +981,10 @@
       <div class="story-box">
         "Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground."
       </div>
+      <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, '&quot;Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground.&quot;')">🎧 Escuchar Cuento Completo (Listen)</button></div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> Poppy's pencil case is red.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy\'s pencil case is red.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Poppy's pencil case is red.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">True [T]</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">False [F] (It is blue!)</button>
@@ -912,7 +992,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> On the desk are 3 yellow pencils.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'On the desk are 3 yellow pencils.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> On the desk are 3 yellow pencils.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">True [T]</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">False [F]</button>
@@ -920,7 +1000,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> They read stories in the library.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'They read stories in the library.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> They read stories in the library.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">True [T]</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">False [F]</button>
@@ -928,7 +1008,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">4.</span> They play games in the canteen.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'They play games in the canteen.')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> They play games in the canteen.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">True [T]</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">False [F] (In the playground!)</button>
@@ -953,7 +1033,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> ______ a golden sun shining brightly in the blue sky.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ a golden sun shining brightly in the blue sky.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> ______ a golden sun shining brightly in the blue sky.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">There is</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">There are</button>
@@ -961,7 +1041,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> ______ five tall trees in the peaceful nature park.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ five tall trees in the peaceful nature park.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> ______ five tall trees in the peaceful nature park.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">There is</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">There are</button>
@@ -969,7 +1049,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> ______ twelve colourful butterflies flying near Flutter.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ twelve colourful butterflies flying near Flutter.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> ______ twelve colourful butterflies flying near Flutter.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">There is</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">There are</button>
@@ -977,7 +1057,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">4.</span> ______ a cute pet rock dog named Pebble resting on the grass.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, '______ a cute pet rock dog named Pebble resting on the grass.')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> ______ a cute pet rock dog named Pebble resting on the grass.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">There is</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">There are</button>
@@ -1002,7 +1082,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">a.</span> Pebble is hiding ______ the big tree trunk.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Pebble is hiding ______ the big tree trunk.')" title="Listen / Escuchar">🔊</button><span class="q-num">a.</span> Pebble is hiding ______ the big tree trunk.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">behind</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">in</button>
@@ -1011,7 +1091,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">b.</span> The fish is swimming ______ the clear river water.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'The fish is swimming ______ the clear river water.')" title="Listen / Escuchar">🔊</button><span class="q-num">b.</span> The fish is swimming ______ the clear river water.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">on</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">in</button>
@@ -1020,7 +1100,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">c.</span> Pebble is sleeping ______ the wooden desk.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Pebble is sleeping ______ the wooden desk.')" title="Listen / Escuchar">🔊</button><span class="q-num">c.</span> Pebble is sleeping ______ the wooden desk.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">under</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">between</button>
@@ -1029,7 +1109,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">d.</span> Flutter is flying ______ two pink flowers.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Flutter is flying ______ two pink flowers.')" title="Listen / Escuchar">🔊</button><span class="q-num">d.</span> Flutter is flying ______ two pink flowers.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">next to</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">between</button>
@@ -1088,7 +1168,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> Cows (can / can't) dance the tango! 🐮 💃</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Cows (can / can\'t) dance the tango! 🐮 💃')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Cows (can / can't) dance the tango! 🐮 💃</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">can't (Cows can't dance!)</button>
@@ -1096,7 +1176,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> Flutter the Toon (can / can't) fly high in the blue sky. 🦋</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Flutter the Toon (can / can\'t) fly high in the blue sky. 🦋')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Flutter the Toon (can / can't) fly high in the blue sky. 🦋</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">can</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">can't</button>
@@ -1104,7 +1184,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> Pebble (can / can't) bark like a happy puppy. 🐶</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Pebble (can / can\'t) bark like a happy puppy. 🐶')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> Pebble (can / can't) bark like a happy puppy. 🐶</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">can</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">can't</button>
@@ -1112,7 +1192,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">4.</span> A little goldfish (can / can't) climb a tall tree. 🐟</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'A little goldfish (can / can\'t) climb a tall tree. 🐟')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> A little goldfish (can / can't) climb a tall tree. 🐟</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">can't</button>
@@ -1136,7 +1216,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> read + ing ➔</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'read + ing ➔')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> read + ing ➔</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">reading</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">readding</button>
@@ -1144,7 +1224,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> dance + ing ➔ (drop the -e!)</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'dance + ing ➔ (drop the -e!)')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> dance + ing ➔ (drop the -e!)</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">dancing</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">danceing</button>
@@ -1152,7 +1232,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> swim + ing ➔ (double the -m!)</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'swim + ing ➔ (double the -m!)')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> swim + ing ➔ (double the -m!)</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">swimming</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">swiming</button>
@@ -1160,7 +1240,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">4.</span> run + ing ➔ (double the -n!)</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'run + ing ➔ (double the -n!)')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> run + ing ➔ (double the -n!)</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">running</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">runing</button>
@@ -1176,7 +1256,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> Look! Astro ______ (sleep) with his starry nightcap.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Look! Astro ______ (sleep) with his starry nightcap.')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Look! Astro ______ (sleep) with his starry nightcap.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">is sleeping</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">are sleeping</button>
@@ -1185,7 +1265,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> Goob ______ (hug) all his Toon friends warmly.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Goob ______ (hug) all his Toon friends warmly.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Goob ______ (hug) all his Toon friends warmly.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">is hugging</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">are hugging</button>
@@ -1193,7 +1273,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> Poppy and Boxten ______ (play) in the corridor.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Poppy and Boxten ______ (play) in the corridor.')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> Poppy and Boxten ______ (play) in the corridor.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">is playing</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">are playing</button>
@@ -1201,7 +1281,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">4.</span> Sofía ______ (study) English with her family right now!</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Sofía ______ (study) English with her family right now!')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> Sofía ______ (study) English with her family right now!</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">is studying</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">are studying</button>
@@ -1228,9 +1308,10 @@
       <div class="story-box">
         "It is Wednesday. Timmy, <span class="dyn-student-name">Sofía</span> and their Toon friends are having a picnic in the nature park. There are <strong>five tall green trees</strong> near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: 'I love nature!'"
       </div>
+      <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, '&quot;It is Wednesday. Timmy,  Sofía  and their Toon friends are having a picnic in the nature park. There are  five tall green trees  near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: \'I love nature!\'&quot;')">🎧 Escuchar Cuento Completo (Listen)</button></div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> Where are they having a picnic?</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Where are they having a picnic?')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Where are they having a picnic?</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">In the library</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">In the nature park</button>
@@ -1239,7 +1320,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> How many tall green trees are there?</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'How many tall green trees are there?')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> How many tall green trees are there?</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">Three</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">Four</button>
@@ -1248,7 +1329,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> What is Flutter doing?</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'What is Flutter doing?')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> What is Flutter doing?</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">Flying</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">Sleeping</button>
@@ -1257,7 +1338,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">4.</span> What is Pebble doing on the grass?</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'What is Pebble doing on the grass?')" title="Listen / Escuchar">🔊</button><span class="q-num">4.</span> What is Pebble doing on the grass?</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">Eating</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">Running</button>
@@ -1274,7 +1355,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">1.</span> Water, juice and milk are...</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Water, juice and milk are...')" title="Listen / Escuchar">🔊</button><span class="q-num">1.</span> Water, juice and milk are...</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, false)">countable</button>
           <button class="choice-btn" onclick="checkChoice(this, true)">uncountable</button>
@@ -1282,7 +1363,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">2.</span> Cows ______ dance, but they can walk.</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Cows ______ dance, but they can walk.')" title="Listen / Escuchar">🔊</button><span class="q-num">2.</span> Cows ______ dance, but they can walk.</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">can't</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">can</button>
@@ -1290,7 +1371,7 @@
       </div>
 
       <div class="question-item">
-        <div class="q-prompt"><span class="q-num">3.</span> Colour mix: Blue + Yellow =</div>
+        <div class="q-prompt"><button class="btn-tts" onclick="speakPrompt(this, 'Colour mix: Blue + Yellow =')" title="Listen / Escuchar">🔊</button><span class="q-num">3.</span> Colour mix: Blue + Yellow =</div>
         <div class="choices-grid">
           <button class="choice-btn" onclick="checkChoice(this, true)">Green</button>
           <button class="choice-btn" onclick="checkChoice(this, false)">Purple</button>
@@ -1501,6 +1582,53 @@
   }
 
   
+  
+  // Text-To-Speech (TTS) Engine
+  let ttsRate = 0.88; // Default clear speed for 8-year-olds
+  let isSlow = false;
+
+  function toggleTtsSpeed() {
+    isSlow = !isSlow;
+    ttsRate = isSlow ? 0.72 : 0.88;
+    document.getElementById('speed-icon').innerText = isSlow ? '🐢' : '🐰';
+    document.getElementById('speed-label').innerText = isSlow ? 'Despacio' : 'Normal';
+    playTone(isSlow ? 440 : 660, 'sine', 0.1, 0);
+  }
+
+  function speakPrompt(btn, text, lang = 'en-US') {
+    if (!('speechSynthesis' in window)) {
+      alert("Tu navegador no soporta lectura de voz.");
+      return;
+    }
+
+    // Stop any ongoing speech
+    window.speechSynthesis.cancel();
+    document.querySelectorAll('.btn-tts, .btn-listen-story').forEach(b => b.classList.remove('speaking'));
+
+    // Clean text and replace dynamic student name
+    let clean = text.replace(/<[^>]*>/g, ' ').replace(/______/g, 'blank');
+    clean = clean.replace(/Sofía/g, currentStudentName);
+
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = lang;
+    utterance.rate = ttsRate;
+    utterance.pitch = 1.05;
+
+    // Pick best natural voice if available
+    const voices = window.speechSynthesis.getVoices();
+    const bestVoice = voices.find(v => v.lang.startsWith(lang.slice(0, 2)) && 
+      (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Siri')));
+    if (bestVoice) utterance.voice = bestVoice;
+
+    if (btn) {
+      btn.classList.add('speaking');
+      utterance.onend = () => btn.classList.remove('speaking');
+      utterance.onerror = () => btn.classList.remove('speaking');
+    }
+
+    window.speechSynthesis.speak(utterance);
+  }
+
   // Student Name Manager
   let currentStudentName = localStorage.getItem('dandy_student_name') || 'Sofía';
 
