@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Sofía & Dandy's World - English Practice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,10 +42,11 @@
   .app-container {
     width: 100%;
     max-width: 900px;
-    padding: 12px 16px 80px 16px;
+    padding: 12px 16px calc(90px + env(safe-area-inset-bottom, 0px)) 16px;
     display: flex;
     flex-direction: column;
     gap: 14px;
+    box-sizing: border-box;
   }
 
   /* Header */
@@ -105,25 +106,34 @@
   .student-pill {
     background: #ffffff;
     border: 2px solid #bae6fd;
-    padding: 5px 12px;
+    padding: 6px 12px;
+    min-height: 40px;
     border-radius: 20px;
     font-size: 0.88rem;
     font-weight: 700;
     color: #0369a1;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    touch-action: manipulation;
+    user-select: none;
+    transition: transform 0.15s, background-color 0.15s;
+  }
+
+  .student-pill:active {
+    transform: scale(0.96);
+    background: #f0f9ff;
   }
 
   .btn-change-icon {
     background: #e0f2fe;
     border: none;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -135,12 +145,15 @@
     border: 2px solid #eab308;
     color: #854d0e;
     font-weight: 800;
-    padding: 5px 12px;
+    padding: 6px 14px;
+    min-height: 40px;
     border-radius: 20px;
     font-size: 0.95rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
+    user-select: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 
   .btn-shuffle {
@@ -150,14 +163,17 @@
     font-family: inherit;
     font-weight: 800;
     font-size: 0.85rem;
-    padding: 7px 12px;
+    padding: 8px 14px;
+    min-height: 40px;
     border-radius: 12px;
     cursor: pointer;
     box-shadow: 0 3px 8px rgba(139,92,246,0.3);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 5px;
     transition: transform 0.15s;
+    touch-action: manipulation;
+    user-select: none;
   }
 
   .btn-shuffle:active {
@@ -170,29 +186,44 @@
     text-decoration: none;
     font-weight: 800;
     font-size: 0.85rem;
-    padding: 7px 12px;
+    padding: 8px 14px;
+    min-height: 40px;
     border-radius: 12px;
     box-shadow: 0 3px 8px rgba(239,68,68,0.3);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 5px;
     transition: transform 0.15s;
+    touch-action: manipulation;
+    user-select: none;
+  }
+
+  .btn-pdf:active {
+    transform: scale(0.94);
   }
 
   .speed-toggle-btn {
     background: #ffffff;
     border: 1.8px solid #cbd5e1;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 6px 12px;
+    min-height: 40px;
     font-family: inherit;
     font-weight: 700;
     font-size: 0.82rem;
     color: #475569;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
     user-select: none;
+    touch-action: manipulation;
+    transition: transform 0.15s, background-color 0.15s;
+  }
+
+  .speed-toggle-btn:active {
+    transform: scale(0.95);
+    background: #f8fafc;
   }
 
   /* Stage Navigation Tabs */
@@ -200,8 +231,11 @@
     display: flex;
     gap: 8px;
     overflow-x: auto;
-    padding-bottom: 4px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    padding: 2px 2px 6px 2px;
+    scroll-behavior: smooth;
   }
 
   .tabs-scroll::-webkit-scrollbar {
@@ -210,11 +244,12 @@
 
   .tab-btn {
     flex: 1;
-    min-width: 135px;
+    min-width: 120px;
+    min-height: 48px;
     background: #ffffff;
     border: 2px solid #cbd5e1;
     border-radius: 14px;
-    padding: 8px 6px;
+    padding: 8px 8px;
     font-family: inherit;
     font-weight: 700;
     font-size: 0.85rem;
@@ -223,8 +258,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 4px;
     transition: all 0.2s;
+    touch-action: manipulation;
+    user-select: none;
   }
 
   .tab-btn.active {
@@ -320,22 +358,22 @@
   .story-box {
     background: #ecfdf5;
     border-left: 5px solid #10b981;
-    padding: 10px 14px;
-    border-radius: 0 12px 12px 0;
+    padding: 12px 14px;
+    border-radius: 0 14px 14px 0;
     color: #065f46;
     font-size: 0.95rem;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
   /* Interactive Question Items */
   .question-item {
     background: #f8fafc;
     border: 1.5px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 10px 12px;
+    border-radius: 14px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     font-size: 1rem;
     font-weight: 600;
     animation: fadeIn 0.2s ease-in;
@@ -343,14 +381,28 @@
 
   .q-prompt {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1.02rem;
+    line-height: 1.45;
   }
 
-  .q-num {
+  .q-prompt .btn-tts {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .q-prompt .q-num {
     color: #0284c7;
     font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  .q-prompt span:last-child {
+    flex: 1;
+    margin-top: 8px;
+    word-break: break-word;
   }
 
   .choices-grid {
@@ -362,15 +414,22 @@
   .choice-btn {
     background: #ffffff;
     border: 2px solid #94a3b8;
-    border-radius: 10px;
-    padding: 8px 14px;
+    border-radius: 12px;
+    padding: 10px 16px;
+    min-height: 44px;
     font-family: inherit;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 700;
     color: #334155;
     cursor: pointer;
     transition: all 0.15s;
     touch-action: manipulation;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
 
   .choice-btn:active {
@@ -392,21 +451,25 @@
   /* TTS Speaker Buttons */
   .btn-tts {
     background: #e0f2fe;
-    border: 1.8px solid #7dd3fc;
+    border: 2px solid #7dd3fc;
     color: #0369a1;
     border-radius: 50%;
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     transition: all 0.15s;
     padding: 0;
     flex-shrink: 0;
     vertical-align: middle;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    touch-action: manipulation;
+    user-select: none;
   }
 
   .btn-tts:active {
@@ -427,8 +490,8 @@
   /* Sentence Feedback Box on Correct Answer */
   .sentence-feedback {
     display: none;
-    margin-top: 10px;
-    padding: 8px 14px;
+    margin-top: 8px;
+    padding: 8px 12px;
     background: #ecfdf5;
     border: 1.5px solid #6ee7b7;
     border-radius: 12px;
@@ -441,11 +504,16 @@
     display: flex;
   }
 
+  .sentence-feedback .btn-tts {
+    flex-shrink: 0;
+  }
+
   .sentence-feedback .feedback-text {
     font-size: 0.95rem;
     font-weight: 700;
     color: #065f46;
     line-height: 1.35;
+    word-break: break-word;
   }
 
   @keyframes fadeInSentence {
@@ -455,23 +523,28 @@
 
   .btn-listen-story {
     background: #ffffff;
-    border: 1.8px solid #10b981;
+    border: 2px solid #10b981;
     color: #047857;
     font-family: inherit;
     font-weight: 800;
-    font-size: 0.85rem;
-    padding: 5px 12px;
-    border-radius: 20px;
+    font-size: 0.88rem;
+    padding: 8px 16px;
+    min-height: 44px;
+    border-radius: 22px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    margin-top: 8px;
+    margin-top: 10px;
     transition: all 0.15s;
+    touch-action: manipulation;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(16,185,129,0.15);
   }
 
   .btn-listen-story:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
     background: #ecfdf5;
   }
 
@@ -491,7 +564,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    min-height: 220px;
+    min-height: 180px;
   }
 
   .basket-col.basket-c {
@@ -521,11 +594,12 @@
 
   .sorted-item {
     background: white;
-    padding: 6px 10px;
-    border-radius: 8px;
+    padding: 8px 12px;
+    min-height: 40px;
+    border-radius: 10px;
     border: 1.5px solid #cbd5e1;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -540,31 +614,39 @@
   .food-pool {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
     background: #ffffff;
     border: 2px dashed #94a3b8;
-    border-radius: 14px;
-    padding: 12px;
+    border-radius: 16px;
+    padding: 14px 10px;
     margin-bottom: 10px;
   }
 
   .food-pill-btn {
     background: #f1f5f9;
     border: 2px solid #cbd5e1;
-    border-radius: 20px;
-    padding: 6px 12px;
+    border-radius: 22px;
+    padding: 8px 16px;
+    min-height: 44px;
+    font-family: inherit;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    color: #334155;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
-    transition: transform 0.15s;
+    transition: transform 0.15s, background-color 0.15s;
+    touch-action: manipulation;
+    user-select: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
 
   .food-pill-btn:active {
     transform: scale(0.94);
+    background: #e2e8f0;
   }
 
   .prep-showcase {
@@ -594,13 +676,17 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-top: 2px solid #e2e8f0;
-    padding: 8px 16px;
+    padding: 10px 16px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+    gap: 12px;
+    box-shadow: 0 -4px 18px rgba(0,0,0,0.06);
     z-index: 100;
   }
 
@@ -610,15 +696,28 @@
     border: none;
     font-family: inherit;
     font-weight: 800;
-    font-size: 1rem;
-    padding: 10px 24px;
+    font-size: 1.02rem;
+    padding: 12px 24px;
+    min-height: 46px;
+    min-width: 130px;
     border-radius: 25px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(2,132,199,0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    user-select: none;
+    transition: transform 0.15s, background-color 0.15s;
+  }
+
+  .nav-step-btn:active {
+    transform: scale(0.96);
   }
 
   .nav-step-btn.btn-prev {
     background: #64748b;
+    box-shadow: 0 4px 10px rgba(100,116,139,0.25);
   }
 
   /* Name Customization Modal */
@@ -629,12 +728,14 @@
     width: 100vw;
     height: 100vh;
     background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 10000;
     padding: 16px;
+    box-sizing: border-box;
   }
 
   .modal-backdrop.show {
@@ -652,19 +753,22 @@
     border: 3.5px solid #38bdf8;
     border-radius: 24px;
     padding: 24px 20px;
+    width: 92vw;
     max-width: 420px;
-    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
     box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 14px;
+    box-sizing: border-box;
   }
 
   .modal-avatar {
-    width: 80px;
-    height: 80px;
+    width: 76px;
+    height: 76px;
     object-fit: contain;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
     animation: bounce 2s infinite ease-in-out;
@@ -682,6 +786,7 @@
     font-size: 0.95rem;
     color: #64748b;
     font-weight: 600;
+    line-height: 1.35;
   }
 
   .name-input-group {
@@ -705,6 +810,7 @@
     font-weight: 700;
     color: #0369a1;
     padding: 12px 16px;
+    min-height: 48px;
     border: 2.5px solid #7dd3fc;
     border-radius: 14px;
     outline: none;
@@ -728,10 +834,16 @@
     font-size: 1.1rem;
     font-weight: 800;
     padding: 12px 20px;
+    min-height: 48px;
     border-radius: 16px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
     transition: transform 0.15s;
+    touch-action: manipulation;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-modal-start:active {
@@ -747,6 +859,172 @@
     height: 100vh;
     pointer-events: none;
     z-index: 9999;
+  }
+
+  /* Responsive Media Queries */
+  @media (max-width: 640px) {
+    .app-container {
+      padding: 10px 12px calc(88px + env(safe-area-inset-bottom, 0px)) 12px;
+      gap: 12px;
+    }
+
+    .top-navbar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 16px;
+    }
+
+    .nav-brand {
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .nav-avatar {
+      width: 42px;
+      height: 42px;
+    }
+
+    .nav-title h1 {
+      font-size: 1.05rem;
+    }
+
+    .nav-title p {
+      font-size: 0.72rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .student-pill,
+    .speed-toggle-btn,
+    .btn-shuffle,
+    .btn-pdf {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      min-height: 40px;
+      border-radius: 12px;
+    }
+
+    .score-badge {
+      padding: 6px 12px;
+      font-size: 0.88rem;
+      min-height: 40px;
+      border-radius: 12px;
+    }
+
+    .tabs-scroll {
+      gap: 6px;
+      padding-bottom: 6px;
+    }
+
+    .tab-btn {
+      flex: 0 0 auto;
+      min-width: 105px;
+      padding: 7px 8px;
+      font-size: 0.82rem;
+      border-radius: 12px;
+    }
+
+    .tab-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .card {
+      padding: 14px 12px;
+      border-radius: 16px;
+      gap: 10px;
+    }
+
+    .card-banner {
+      gap: 8px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+    }
+
+    .card-hint {
+      font-size: 0.8rem;
+    }
+
+    .sorting-game {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .basket-col {
+      min-height: 140px;
+      padding: 10px;
+    }
+
+    .basket-header {
+      font-size: 0.92rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .choice-btn {
+      flex: 1 1 calc(50% - 8px);
+      min-width: 110px;
+      padding: 10px 10px;
+      font-size: 0.92rem;
+    }
+
+    .btn-listen-story {
+      width: 100%;
+    }
+
+    .nav-step-btn {
+      min-width: 115px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+    }
+
+    #certificate-card h2 {
+      font-size: 1.15rem !important;
+    }
+
+    #certificate-card p {
+      font-size: 0.9rem !important;
+    }
+
+    #certificate-card div {
+      font-size: 1.8rem !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .app-container {
+      padding: 8px 8px calc(88px + env(safe-area-inset-bottom, 0px)) 8px;
+    }
+
+    .student-pill,
+    .speed-toggle-btn,
+    .btn-shuffle,
+    .btn-pdf {
+      padding: 5px 8px;
+      font-size: 0.76rem;
+      min-height: 38px;
+    }
+
+    .score-badge {
+      padding: 5px 8px;
+      font-size: 0.82rem;
+      min-height: 38px;
+    }
+
+    .tab-btn {
+      min-width: 95px;
+      font-size: 0.78rem;
+    }
   }
 </style>
 </head>
@@ -809,23 +1087,23 @@
   <nav class="tabs-scroll">
     <button class="tab-btn active" onclick="switchStage(1)">
       <img src="/static/dandy_assets/poppy.png" alt="Poppy">
-      <span>1. School & Routines</span>
+      <span>🌸 1. Present</span>
     </button>
     <button class="tab-btn" onclick="switchStage(2)">
       <img src="/static/dandy_assets/flutter.png" alt="Flutter">
-      <span>2. Nature & Where?</span>
+      <span>🌿 2. Prepositions</span>
     </button>
     <button class="tab-btn" onclick="switchStage(3)">
       <img src="/static/dandy_assets/sprout.png" alt="Sprout">
-      <span>3. Food & Can/Can't</span>
+      <span>🍓 3. Food</span>
     </button>
     <button class="tab-btn" onclick="switchStage(4)">
       <img src="/static/dandy_assets/astro.png" alt="Astro">
-      <span>4. Actions Right Now</span>
+      <span>🏃 4. Continuous</span>
     </button>
     <button class="tab-btn" onclick="switchStage(5)">
       <img src="/static/dandy_assets/boxten.png" alt="Boxten">
-      <span>5. Final Exam!</span>
+      <span>⭐ 5. Challenge</span>
     </button>
   </nav>
 
@@ -1662,7 +1940,10 @@
     if (activeStage) activeStage.classList.add('active');
 
     const activeTab = document.querySelectorAll('.tab-btn')[stageNum - 1];
-    if (activeTab) activeTab.classList.add('active');
+    if (activeTab) {
+      activeTab.classList.add('active');
+      activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
 
     document.getElementById('btn-prev').style.visibility = (stageNum === 1) ? 'hidden' : 'visible';
     const nextBtn = document.getElementById('btn-next');
