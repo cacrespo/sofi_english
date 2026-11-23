@@ -32,7 +32,10 @@ def test_pdf_endpoint():
 
 
 def test_static_assets():
-    for toon in ["dandy.png", "poppy.png", "pebble.png", "flutter.png", "sprout.png"]:
+    for toon in [
+        "dandy.png", "poppy.png", "pebble.png", "flutter.png", "sprout.png",
+        "astro.png", "boxten.png", "goob.png", "cosmo.png", "shrimpo.png", "vee.png"
+    ]:
         response = client.get(f"/static/dandy_assets/{toon}")
         assert response.status_code == 200
         assert "image/png" in response.headers["content-type"]
