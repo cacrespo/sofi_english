@@ -1365,7 +1365,10 @@
       <div class="card-banner">
         <span class="card-badge" style="background:#0284c7;">3</span>
         <h2 class="card-title">Town Detective with Vee: Is there...? / Are there...?</h2>
-        <span class="card-hint">Is there (singular) ➔ Yes, there is / No, there isn't | Are there (plural) ➔ Yes, there are / No, there aren't</span>
+        <span class="card-hint">Look at the town map below and answer Vee's questions!</span>
+      </div>
+      <div class="town-map-container" style="text-align:center; margin:8px 0 14px 0;">
+        <img src="/static/dandy_assets/gardenview_town.jpg" alt="Gardenview Town Map" style="width:100%; max-width:720px; height:auto; border-radius:14px; border:2.5px solid #bae6fd; box-shadow:0 3px 10px rgba(0,0,0,0.08); display:inline-block;">
       </div>
       <div id="container-s2-questions" class="item-list"></div>
     </div>
@@ -1609,16 +1612,20 @@
       { prompt: "Where is Pebble? Pebble is sitting ______ Dandy, wagging his tail.", correct: "in front of", wrong: ["between", "under"] }
     ],
     s2_questionsShortAnswers: [
-      { prompt: "Is there a cinema in Gardenview Town?", correct: "Yes, there is.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Is there a cinema in Gardenview Town? Yes, there is." },
-      { prompt: "Are there any cats under the tree?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there any cats under the tree? Yes, there are." },
-      { prompt: "Is there a school bag on the table?", correct: "No, there isn't.", wrong: ["No, there aren't.", "Yes, there are."], sentence: "Is there a school bag on the table? No, there isn't." },
-      { prompt: "Are there six cinemas in the town?", correct: "No, there aren't.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Are there six cinemas in the town? No, there aren't." },
-      { prompt: "Is there an ice-cream in the fridge?", correct: "Yes, there is.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Is there an ice-cream in the fridge? Yes, there is." },
-      { prompt: "Are there twenty tomatoes on the table?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there twenty tomatoes on the table? Yes, there are." },
-      { prompt: "Is there a hospital in our city?", correct: "Yes, there is.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Is there a hospital in our city? Yes, there is." },
-      { prompt: "Are there five chairs in the art room?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there five chairs in the art room? Yes, there are." },
-      { prompt: "Is there a theatre near the park?", correct: "No, there isn't.", wrong: ["No, there aren't.", "Yes, there is."], sentence: "Is there a theatre near the park? No, there isn't." },
-      { prompt: "Are there any trophies next to the guitar?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there any trophies next to the guitar? Yes, there are." }
+      { prompt: "Look at the map: Is there a hospital?", correct: "Yes, there is.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Is there a hospital? Yes, there is." },
+      { prompt: "Look at the map: Are there any cats?", correct: "No, there aren't.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Are there any cats? No, there aren't." },
+      { prompt: "Look at the map: Is there a police station?", correct: "Yes, there is.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Is there a police station? Yes, there is." },
+      { prompt: "Look at the map: Is there a cinema?", correct: "No, there isn't.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Is there a cinema? No, there isn't." },
+      { prompt: "Look at the map: Is there a school?", correct: "Yes, there is.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Is there a school? Yes, there is." },
+      { prompt: "Look at the map: Are there any cars on the road?", correct: "Yes, there are.", wrong: ["No, there aren't.", "Yes, there is."], sentence: "Are there cars on the road? Yes, there are." },
+      { prompt: "Look at the map: Is there a bus stop?", correct: "Yes, there is.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Is there a bus stop? Yes, there is." },
+      { prompt: "Look at the map: Is there a restaurant?", correct: "No, there isn't.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Is there a restaurant? No, there isn't." },
+      { prompt: "Look at the map: Are there houses in the town?", correct: "Yes, there are.", wrong: ["No, there aren't.", "Yes, there is."], sentence: "Are there houses in town? Yes, there are." },
+      { prompt: "Look at the map: Is there a post office?", correct: "No, there isn't.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Is there a post office? No, there isn't." },
+      { prompt: "Look at the map: Is there a candy shop?", correct: "Yes, there is.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Is there a candy shop? Yes, there is." },
+      { prompt: "Look at the map: Is there a sports centre?", correct: "No, there isn't.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Is there a sports centre? No, there isn't." },
+      { prompt: "Look at the map: Is there an open library?", correct: "Yes, there is.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Is there an open library? Yes, there is." },
+      { prompt: "Look at the map: Is there a zoo?", correct: "No, there isn't.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Is there a zoo? No, there isn't." }
     ],
     s3_aAnSome: [
       { prompt: "Sprout would like ______ orange, please.", correct: "an", wrong: ["a", "some"] },

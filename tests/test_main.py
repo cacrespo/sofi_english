@@ -39,3 +39,7 @@ def test_static_assets():
         response = client.get(f"/static/dandy_assets/{toon}")
         assert response.status_code == 200
         assert "image/png" in response.headers["content-type"]
+
+    town_resp = client.get("/static/dandy_assets/gardenview_town.jpg")
+    assert town_resp.status_code == 200
+    assert "image/jpeg" in town_resp.headers["content-type"]
