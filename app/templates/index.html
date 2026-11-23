@@ -1026,6 +1026,180 @@
       font-size: 0.78rem;
     }
   }
+
+  /* Sentence Builder (Word Scramble) */
+  .sentence-builder-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .scramble-box {
+    background: #f8fafc;
+    border: 2.5px dashed #93c5fd;
+    border-radius: 16px;
+    padding: 14px;
+    transition: all 0.2s ease;
+  }
+
+  .scramble-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .scramble-toon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #0369a1;
+  }
+
+  .scramble-toon-badge img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .scramble-target-box {
+    min-height: 52px;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+  }
+
+  .scramble-target-box.is-correct {
+    border-color: #22c55e !important;
+    background: #f0fdf4 !important;
+  }
+
+  .scramble-target-box.is-wrong {
+    border-color: #ef4444 !important;
+    background: #fef2f2 !important;
+  }
+
+  .scramble-target-placeholder {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-style: italic;
+    user-select: none;
+  }
+
+  .scramble-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .scramble-word-btn {
+    background: #ffffff;
+    border: 2px solid #38bdf8;
+    color: #0369a1;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.15s;
+    touch-action: manipulation;
+  }
+
+  .scramble-word-btn:hover {
+    background: #e0f2fe;
+    transform: translateY(-2px);
+  }
+
+  .scramble-word-btn.placed {
+    opacity: 0.3;
+    pointer-events: none;
+    transform: scale(0.95);
+  }
+
+  .scramble-placed-chip {
+    background: #0284c7;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 18px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.15s;
+    touch-action: manipulation;
+  }
+
+  .scramble-placed-chip:hover {
+    background: #e11d48;
+    transform: scale(0.96);
+  }
+
+  .scramble-placed-chip::after {
+    content: "✕";
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .scramble-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-check-scramble {
+    background: #22c55e;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.15s;
+    touch-action: manipulation;
+    box-shadow: 0 2px 5px rgba(34,197,94,0.3);
+  }
+
+  .btn-check-scramble:hover {
+    background: #16a34a;
+  }
+
+  .btn-clear-scramble {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    touch-action: manipulation;
+  }
+
+  .btn-clear-scramble:hover {
+    background: #e2e8f0;
+    color: #334155;
+  }
 </style>
 </head>
 <body>
@@ -1172,7 +1346,7 @@
     <div class="card">
       <div class="card-banner">
         <span class="card-badge">2</span>
-        <h2 class="card-title">Where is Pebble? (Prepositions of Place)</h2>
+        <h2 class="card-title">Where is Pebble & The Cats? (Prepositions of Place)</h2>
       </div>
       <div class="prep-showcase">
         <span class="prep-card">📥 IN (adentro)</span>
@@ -1181,8 +1355,19 @@
         <span class="prep-card">🙈 BEHIND (detrás)</span>
         <span class="prep-card">👉 NEXT TO (al lado)</span>
         <span class="prep-card">↔️ BETWEEN (entre)</span>
+        <span class="prep-card">👀 IN FRONT OF (delante)</span>
       </div>
       <div id="container-s2-prepositions" class="item-list"></div>
+    </div>
+
+    <!-- Act 3: Town Detective with Vee -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#0284c7;">3</span>
+        <h2 class="card-title">Town Detective with Vee: Is there...? / Are there...?</h2>
+        <span class="card-hint">Is there (singular) ➔ Yes, there is / No, there isn't | Are there (plural) ➔ Yes, there are / No, there aren't</span>
+      </div>
+      <div id="container-s2-questions" class="item-list"></div>
     </div>
   </section>
 
@@ -1214,7 +1399,8 @@
     <div class="card">
       <div class="card-banner">
         <span class="card-badge">2</span>
-        <h2 class="card-title">Dandy's Breakfast: "A", "An" or "Some"?</h2>
+        <h2 class="card-title">Dandy & Sprout's Pantry: "A", "An", "Some" or "ANY"?</h2>
+        <span class="card-hint">A / An (1) | Some (+ afirmativo) | Any (- negativo y ? preguntas)</span>
       </div>
       <div id="container-s3-aAnSome" class="item-list"></div>
     </div>
@@ -1222,7 +1408,8 @@
     <div class="card">
       <div class="card-banner">
         <span class="card-badge" style="background:#9333ea;">3</span>
-        <h2 class="card-title">Can / Can't: "Cows Can't Dance!"</h2>
+        <h2 class="card-title">Can / Can't with Flutter & Friends: "Abilities & ...but..."</h2>
+        <span class="card-hint">What can or can't they do?</span>
       </div>
       <div id="container-s3-canCant" class="item-list"></div>
     </div>
@@ -1256,6 +1443,16 @@
         <h2 class="card-title">Routine (Every day) OR Happening NOW?</h2>
       </div>
       <div id="container-s4-routine" class="item-list"></div>
+    </div>
+
+    <!-- Act 4: Astro's Sentence Builder -->
+    <div class="card">
+      <div class="card-banner">
+        <span class="card-badge" style="background:#ec4899;">4</span>
+        <h2 class="card-title">Astro & Friends: Put the Words in Order!</h2>
+        <span class="card-hint">Tap the word chips in order to build the sentence!</span>
+      </div>
+      <div id="container-s4-builder" class="sentence-builder-list"></div>
     </div>
   </section>
 
@@ -1339,7 +1536,15 @@
       { prompt: "My brother (ride / rides) his red bike in the park.", correct: "rides", wrong: ["ride"] },
       { prompt: "Mrs. Bee (fly / flies) to the flowers to make honey.", correct: "flies", wrong: ["fly"] },
       { prompt: "The cows (eat / eats) fresh grass on the farm.", correct: "eat", wrong: ["eats"] },
-      { prompt: "Pebble the puppy (bark / barks) happily when he plays.", correct: "barks", wrong: ["bark"] }
+      { prompt: "Pebble the puppy (bark / barks) happily when he plays.", correct: "barks", wrong: ["bark"] },
+      { prompt: "Dandy always (drinks / drink) hot cocoa in the morning.", correct: "drinks", wrong: ["drink"] },
+      { prompt: "Poppy (doesn't play / don't play) tennis on Sundays.", correct: "doesn't play", wrong: ["don't play"] },
+      { prompt: "Where (do / does) your friends come from?", correct: "do", wrong: ["does"] },
+      { prompt: "Tisha (vacuums / vacuum) the floor once a week.", correct: "vacuums", wrong: ["vacuum"] },
+      { prompt: "They often (visit / visits) their grandparents at weekends.", correct: "visit", wrong: ["visits"] },
+      { prompt: "Kate and I (tidy / tidies) our bedrooms every Saturday.", correct: "tidy", wrong: ["tidies"] },
+      { prompt: "Astro never (wakes / wake) up before 10 AM.", correct: "wakes", wrong: ["wake"] },
+      { prompt: "Do they (listen / listens) to pop music? — Yes, they do!", correct: "listen", wrong: ["listens"] }
     ],
     s1_dontDoesnt: [
       { prompt: "Timmy ______ (don't / doesn't) drink cold soda at night.", correct: "doesn't", wrong: ["don't"] },
@@ -1347,6 +1552,12 @@
       { prompt: "Pebble ______ (don't / doesn't) climb tall trees.", correct: "doesn't", wrong: ["don't"] },
       { prompt: "We ______ (don't / doesn't) eat dinner in the classroom.", correct: "don't", wrong: ["doesn't"] },
       { prompt: "Astro ______ (don't / doesn't) like waking up early.", correct: "doesn't", wrong: ["don't"] },
+      { prompt: "Lily ______ (don't / doesn't) wear shorts at all.", correct: "doesn't", wrong: ["don't"] },
+      { prompt: "They ______ (don't / doesn't) understand this difficult rule.", correct: "don't", wrong: ["doesn't"] },
+      { prompt: "My cousin ______ (don't / doesn't) speak Italian.", correct: "doesn't", wrong: ["don't"] },
+      { prompt: "We ______ (don't / doesn't) go to the park on rainy days.", correct: "don't", wrong: ["doesn't"] },
+      { prompt: "______ Jim walk his dog in the evening? — Yes, he does!", correct: "Does", wrong: ["Do"] },
+      { prompt: "______ you want to go home now? — Yes, I do!", correct: "Do", wrong: ["Does"] },
       { prompt: "______ your brother ride a bike in the park? — Yes, he does!", correct: "Does", wrong: ["Do"] },
       { prompt: "______ you like playing in Dandy's World? — Yes, I do!", correct: "Do", wrong: ["Does"] },
       { prompt: "______ Dandy sell items in his shop? — Yes, he does!", correct: "Does", wrong: ["Do"] },
@@ -1370,7 +1581,13 @@
       { prompt: "______ twenty sweet bees around Mrs. Bee's hive.", correct: "There are", wrong: ["There is"] },
       { prompt: "______ one shiny red apple on tree number 1.", correct: "There is", wrong: ["There are"] },
       { prompt: "______ four white clouds in the sunny sky.", correct: "There are", wrong: ["There is"] },
-      { prompt: "______ a friendly hare hiding in the nature park.", correct: "There is", wrong: ["There are"] }
+      { prompt: "______ a friendly hare hiding in the nature park.", correct: "There is", wrong: ["There are"] },
+      { prompt: "______ fifteen happy children in Sofía's 3rd grade class.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ a smiling girl standing in front of the school.", correct: "There is", wrong: ["There are"] },
+      { prompt: "______ two little fish swimming in the glass bowl.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ three yellow books on your study desk.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ three playful mice hiding under the bed.", correct: "There are", wrong: ["There is"] },
+      { prompt: "______ a delicious strawberry ice-cream in Dandy's fridge.", correct: "There is", wrong: ["There are"] }
     ],
     s2_prepositions: [
       { prompt: "Pebble is hiding ______ the big tree trunk.", correct: "behind", wrong: ["in", "between"] },
@@ -1382,7 +1599,26 @@
       { prompt: "Mrs. Bee is flying ______ the colourful flowers.", correct: "over", wrong: ["under", "behind"] },
       { prompt: "The egg is safe ______ the bird's nest.", correct: "in", wrong: ["behind", "between"] },
       { prompt: "Goob is standing ______ Dandy and Poppy.", correct: "between", wrong: ["under", "on"] },
-      { prompt: "The little rabbit is resting ______ the warm sun.", correct: "under", wrong: ["between", "behind"] }
+      { prompt: "The little rabbit is resting ______ the warm sun.", correct: "under", wrong: ["between", "behind"] },
+      { prompt: "The wooden chair is ______ the big classroom window.", correct: "in front of", wrong: ["behind", "under"] },
+      { prompt: "The girl is standing ______ the house waiting for the bus.", correct: "in front of", wrong: ["between", "under"] },
+      { prompt: "Where is the cat? Cat number one is ______ the wooden table.", correct: "under", wrong: ["on", "behind"] },
+      { prompt: "Where is the cat? Cat number two is sitting ______ the chair.", correct: "on", wrong: ["in", "under"] },
+      { prompt: "Where is the cat? Cat number three is hiding ______ the big tree.", correct: "behind", wrong: ["on", "in"] },
+      { prompt: "Where is the cat? Cat number four is curled up ______ the tall boot.", correct: "in", wrong: ["under", "between"] },
+      { prompt: "Where is Pebble? Pebble is sitting ______ Dandy, wagging his tail.", correct: "in front of", wrong: ["between", "under"] }
+    ],
+    s2_questionsShortAnswers: [
+      { prompt: "Is there a cinema in Gardenview Town?", correct: "Yes, there is.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Is there a cinema in Gardenview Town? Yes, there is." },
+      { prompt: "Are there any cats under the tree?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there any cats under the tree? Yes, there are." },
+      { prompt: "Is there a school bag on the table?", correct: "No, there isn't.", wrong: ["No, there aren't.", "Yes, there are."], sentence: "Is there a school bag on the table? No, there isn't." },
+      { prompt: "Are there six cinemas in the town?", correct: "No, there aren't.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Are there six cinemas in the town? No, there aren't." },
+      { prompt: "Is there an ice-cream in the fridge?", correct: "Yes, there is.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Is there an ice-cream in the fridge? Yes, there is." },
+      { prompt: "Are there twenty tomatoes on the table?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there twenty tomatoes on the table? Yes, there are." },
+      { prompt: "Is there a hospital in our city?", correct: "Yes, there is.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Is there a hospital in our city? Yes, there is." },
+      { prompt: "Are there five chairs in the art room?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there five chairs in the art room? Yes, there are." },
+      { prompt: "Is there a theatre near the park?", correct: "No, there isn't.", wrong: ["No, there aren't.", "Yes, there is."], sentence: "Is there a theatre near the park? No, there isn't." },
+      { prompt: "Are there any trophies next to the guitar?", correct: "Yes, there are.", wrong: ["Yes, there is.", "No, there aren't."], sentence: "Are there any trophies next to the guitar? Yes, there are." }
     ],
     s3_aAnSome: [
       { prompt: "Sprout would like ______ orange, please.", correct: "an", wrong: ["a", "some"] },
@@ -1394,7 +1630,15 @@
       { prompt: "Can I eat ______ banana, please?", correct: "a", wrong: ["an", "some"] },
       { prompt: "Would you like ______ cold water?", correct: "some", wrong: ["a", "an"] },
       { prompt: "There is ______ egg in the basket.", correct: "an", wrong: ["a", "some"] },
-      { prompt: "We need ______ orange juice for breakfast.", correct: "some", wrong: ["a", "an"] }
+      { prompt: "We need ______ orange juice for breakfast.", correct: "some", wrong: ["a", "an"] },
+      { prompt: "There isn't ______ chicken in the kitchen.", correct: "any", wrong: ["some", "a"] },
+      { prompt: "There aren't ______ grapes in the fruit basket.", correct: "any", wrong: ["some", "an"] },
+      { prompt: "Is there ______ orange juice in the fridge?", correct: "any", wrong: ["some", "a"] },
+      { prompt: "Are there ______ fresh bananas on the counter?", correct: "any", wrong: ["some", "a"] },
+      { prompt: "There isn't ______ butter on the bread.", correct: "any", wrong: ["some", "an"] },
+      { prompt: "Sprout has ______ red tomatoes in his basket.", correct: "some", wrong: ["any", "a"] },
+      { prompt: "There is ______ hamburger on the plate.", correct: "a", wrong: ["an", "some"] },
+      { prompt: "Can I have ______ delicious strawberry, please?", correct: "a", wrong: ["an", "any"] }
     ],
     s3_canCant: [
       { prompt: "Cows (can / can't) dance the tango! 🐮 💃", correct: "can't", wrong: ["can"] },
@@ -1406,7 +1650,14 @@
       { prompt: "A bird (can / can't) sing sweet songs in the tree. 🐦", correct: "can", wrong: ["can't"] },
       { prompt: "Elephants (can / can't) jump over a tall house! 🐘", correct: "can't", wrong: ["can"] },
       { prompt: "Sofía (can / can't) speak and write English! ⭐", correct: "can", wrong: ["can't"] },
-      { prompt: "A frog (can / can't) swim and jump very far. 🐸", correct: "can", wrong: ["can't"] }
+      { prompt: "A frog (can / can't) swim and jump very far. 🐸", correct: "can", wrong: ["can't"] },
+      { prompt: "Flutter can fly high, but she ______ (can / can't) dive into the deep sea. 🦋", correct: "can't", wrong: ["can"] },
+      { prompt: "Mary can ride a bike, but she ______ (can / can't) dive in the water.", correct: "can't", wrong: ["can"] },
+      { prompt: "Tim can't do difficult puzzles, but he ______ (can / can't) climb tall trees.", correct: "can", wrong: ["can't"] },
+      { prompt: "Simon can lift heavy weights, but he ______ (can / can't) fly like a bird.", correct: "can't", wrong: ["can"] },
+      { prompt: "Can she run fast? 🏃‍♀️", correct: "Yes, she can.", wrong: ["No, she can.", "Yes, she can't."], sentence: "Can she run fast? Yes, she can." },
+      { prompt: "Can a little baby speak English? 👶", correct: "No, he can't.", wrong: ["Yes, he can't.", "No, he can."], sentence: "Can a little baby speak English? No, he can't." },
+      { prompt: "Pebble can bark and play, but he ______ (can / can't) drive a car. 🐶", correct: "can't", wrong: ["can"] }
     ],
     s4_ing: [
       { prompt: "read + ing ➔", correct: "reading", wrong: ["readding", "readin"], sentence: "Read plus ing is reading." },
@@ -1428,7 +1679,13 @@
       { prompt: "The birds ______ (sing) in the five tall trees right now.", correct: "are singing", wrong: ["is singing", "sings"] },
       { prompt: "Lucas and Mia ______ (draw) colourful pictures in the art room.", correct: "are drawing", wrong: ["is drawing", "draws"] },
       { prompt: "Pebble the puppy ______ (run) after a red ball.", correct: "is running", wrong: ["are running", "runs"] },
-      { prompt: "Mrs. Bee ______ (fly) over four yellow flowers.", correct: "is flying", wrong: ["are flying", "flies"] }
+      { prompt: "Mrs. Bee ______ (fly) over four yellow flowers.", correct: "is flying", wrong: ["are flying", "flies"] },
+      { prompt: "The chef ______ (cook) a delicious dinner in the kitchen.", correct: "is cooking", wrong: ["are cooking", "cooks"] },
+      { prompt: "Martin ______ (play) the guitar with his band right now.", correct: "is playing", wrong: ["are playing", "plays"] },
+      { prompt: "Look! The blue bird ______ (fly) over the garden.", correct: "is flying", wrong: ["are flying", "flies"] },
+      { prompt: "Look outside! We ______ (make) a funny snowman in the snow.", correct: "are making", wrong: ["is making", "makes"] },
+      { prompt: "My mum ______ (make) a sweet birthday cake for me.", correct: "is making", wrong: ["are making", "makes"] },
+      { prompt: "They ______ (ride a bike) in the nature park.", correct: "are riding a bike", wrong: ["is riding a bike", "rides"] }
     ],
     s4_routine: [
       { prompt: "Every morning, Poppy (walks / is walking) to school.", correct: "walks", wrong: ["is walking"] },
@@ -1452,6 +1709,9 @@
       { prompt: "______ seven butterflies flying in the nature park.", correct: "There are", wrong: ["There is", "Is there"], sentence: "There are seven butterflies flying in the nature park." },
       { prompt: "Water, juice and milk are...", correct: "uncountable nouns", wrong: ["countable nouns", "prepositions"], sentence: "Water, juice and milk are uncountable nouns." },
       { prompt: "Apples, bananas and cookies are...", correct: "countable nouns", wrong: ["uncountable nouns", "verbs"], sentence: "Apples, bananas and cookies are countable nouns." },
+      { prompt: "There isn't ______ milk in the glass.", correct: "any", wrong: ["some", "a"], sentence: "There isn't any milk in the glass." },
+      { prompt: "Is there a cinema in Gardenview Town?", correct: "Yes, there is.", wrong: ["Yes, there are.", "No, there isn't."], sentence: "Is there a cinema in Gardenview Town? Yes, there is." },
+      { prompt: "Flutter can fly high, but she ______ dive in the sea.", correct: "can't", wrong: ["can", "isn't"], sentence: "Flutter can fly high, but she can't dive in the sea." },
       { prompt: "Cows ______ dance the tango, but they can walk.", correct: "can't", wrong: ["can", "are"], sentence: "Cows can't dance the tango, but they can walk." },
       { prompt: "Look! Poppy ______ a storybook right now.", correct: "is reading", wrong: ["reads", "read"], sentence: "Look! Poppy is reading a storybook right now." },
       { prompt: "Timmy ______ his teeth every morning.", correct: "brushes", wrong: ["brush", "is brushing"], sentence: "Timmy brushes his teeth every morning." },
@@ -1624,6 +1884,145 @@
     });
   }
 
+  // Sentence Builder (Word Scramble from PDF Page 12 & Dandy's World)
+  const SENTENCE_BUILDER_ITEMS = [
+    { toon: "Astro", avatar: "/static/dandy_assets/astro.png", words: ["My", "dad", "is", "sleeping"], sentence: "My dad is sleeping." },
+    { toon: "Boxten", avatar: "/static/dandy_assets/boxten.png", words: ["They", "are", "playing", "the", "guitars"], sentence: "They are playing the guitars." },
+    { toon: "Shrimpo", avatar: "/static/dandy_assets/shrimpo.png", words: ["Juan", "is", "wearing", "black", "pants"], sentence: "Juan is wearing black pants." },
+    { toon: "Sprout", avatar: "/static/dandy_assets/sprout.png", words: ["My", "mom", "is", "drinking", "soda"], sentence: "My mom is drinking soda." },
+    { toon: "Poppy", avatar: "/static/dandy_assets/poppy.png", words: ["Fredy", "is", "dancing", "salsa"], sentence: "Fredy is dancing salsa." },
+    { toon: "Cosmo", avatar: "/static/dandy_assets/cosmo.png", words: ["The", "chef", "is", "cooking", "dinner"], sentence: "The chef is cooking dinner." },
+    { toon: "Goob", avatar: "/static/dandy_assets/goob.png", words: ["We", "are", "making", "a", "snowman"], sentence: "We are making a snowman." },
+    { toon: "Flutter", avatar: "/static/dandy_assets/flutter.png", words: ["The", "bird", "is", "flying", "in", "the", "garden"], sentence: "The bird is flying in the garden." },
+    { toon: "Dandy", avatar: "/static/dandy_assets/dandy.png", words: ["Sofía", "is", "reading", "an", "exciting", "book"], sentence: "Sofía is reading an exciting book." }
+  ];
+
+  function renderSentenceBuilder() {
+    const container = document.getElementById("container-s4-builder");
+    if (!container) return;
+    container.innerHTML = "";
+
+    const selected = shuffle(SENTENCE_BUILDER_ITEMS).slice(0, 3);
+    selected.forEach((item, idx) => {
+      const box = document.createElement("div");
+      box.className = "scramble-box";
+
+      const header = document.createElement("div");
+      header.className = "scramble-header";
+      header.innerHTML = `
+        <div class="scramble-toon-badge">
+          <img src="${item.avatar}" alt="${item.toon}">
+          <span>${item.toon}'s Challenge #${idx + 1}</span>
+        </div>
+      `;
+
+      const targetBox = document.createElement("div");
+      targetBox.className = "scramble-target-box";
+      const placeholder = document.createElement("span");
+      placeholder.className = "scramble-target-placeholder";
+      placeholder.innerText = "Toca las palabras de abajo en orden...";
+      targetBox.appendChild(placeholder);
+
+      const poolDiv = document.createElement("div");
+      poolDiv.className = "scramble-pool";
+
+      const placedWords = [];
+      const wordObjects = item.words.map((w, wIdx) => {
+        const displayWord = (w === 'Sofía') ? currentStudentName : w;
+        return { id: wIdx, word: displayWord, origWord: w };
+      });
+      const shuffledWords = shuffle(wordObjects);
+
+      shuffledWords.forEach(wObj => {
+        const wordBtn = document.createElement("button");
+        wordBtn.className = "scramble-word-btn";
+        wordBtn.innerText = wObj.word;
+        wordBtn.onclick = function() {
+          getAudioCtx();
+          playTone(440, 'sine', 0.08, 0);
+          wordBtn.classList.add("placed");
+          placedWords.push(wObj);
+          renderPlaced();
+        };
+        wObj.btn = wordBtn;
+        poolDiv.appendChild(wordBtn);
+      });
+
+      function renderPlaced() {
+        targetBox.innerHTML = "";
+        targetBox.classList.remove("is-correct", "is-wrong");
+        if (placedWords.length === 0) {
+          targetBox.appendChild(placeholder);
+          return;
+        }
+        placedWords.forEach((pw, pIdx) => {
+          const chip = document.createElement("span");
+          chip.className = "scramble-placed-chip";
+          chip.innerText = pw.word;
+          chip.title = "Toca para quitar";
+          chip.onclick = function() {
+            getAudioCtx();
+            playTone(330, 'sine', 0.08, 0);
+            pw.btn.classList.remove("placed");
+            placedWords.splice(pIdx, 1);
+            renderPlaced();
+          };
+          targetBox.appendChild(chip);
+        });
+      }
+
+      const actionsDiv = document.createElement("div");
+      actionsDiv.className = "scramble-actions";
+
+      const clearBtn = document.createElement("button");
+      clearBtn.className = "btn-clear-scramble";
+      clearBtn.innerText = "🔄 Limpiar";
+      clearBtn.onclick = function() {
+        placedWords.forEach(pw => pw.btn.classList.remove("placed"));
+        placedWords.length = 0;
+        renderPlaced();
+      };
+
+      const checkBtn = document.createElement("button");
+      checkBtn.className = "btn-check-scramble";
+      checkBtn.innerText = "✅ Comprobar";
+      checkBtn.onclick = function() {
+        getAudioCtx();
+        const currentSentence = placedWords.map(p => p.origWord).join(" ");
+        const expectedSentence = item.words.join(" ");
+
+        if (currentSentence.toLowerCase() === expectedSentence.toLowerCase()) {
+          targetBox.classList.add("is-correct");
+          playCorrectSound();
+          if (!box.dataset.scored) {
+            box.dataset.scored = "true";
+            score++;
+            document.getElementById("score-display").innerText = `⭐ ${score} pts`;
+            launchConfetti();
+          }
+          const ttsText = item.sentence.replace(/Sofía/g, currentStudentName);
+          if (autoReadSentence) {
+            setTimeout(() => {
+              speakPrompt(null, ttsText);
+            }, 300);
+          }
+        } else {
+          targetBox.classList.add("is-wrong");
+          playWrongSound();
+        }
+      };
+
+      actionsDiv.appendChild(clearBtn);
+      actionsDiv.appendChild(checkBtn);
+
+      box.appendChild(header);
+      box.appendChild(targetBox);
+      box.appendChild(poolDiv);
+      box.appendChild(actionsDiv);
+      container.appendChild(box);
+    });
+  }
+
   // Regenerate all dynamic sections
   function regenerateAllQuestions() {
     renderQuestionGroup("container-s1-vocab", QUESTION_BANK.s1_vocab, 4);
@@ -1633,6 +2032,7 @@
 
     renderQuestionGroup("container-s2-thereIsAre", QUESTION_BANK.s2_thereIsAre, 4);
     renderQuestionGroup("container-s2-prepositions", QUESTION_BANK.s2_prepositions, 4);
+    renderQuestionGroup("container-s2-questions", QUESTION_BANK.s2_questionsShortAnswers, 4);
 
     renderFoodPool();
     renderQuestionGroup("container-s3-aAnSome", QUESTION_BANK.s3_aAnSome, 4);
@@ -1641,6 +2041,7 @@
     renderQuestionGroup("container-s4-ing", QUESTION_BANK.s4_ing, 4);
     renderQuestionGroup("container-s4-continuous", QUESTION_BANK.s4_continuous, 4);
     renderQuestionGroup("container-s4-routine", QUESTION_BANK.s4_routine, 4);
+    renderSentenceBuilder();
 
     renderQuestionGroup("container-s5-story", QUESTION_BANK.s5_story, 4);
     renderQuestionGroup("container-s5-trivia", QUESTION_BANK.s5_trivia, 6);

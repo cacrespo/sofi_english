@@ -10,6 +10,11 @@ def test_home_page():
     assert response.status_code == 200
     assert "Dandy's World" in response.text
     assert "student-name-input" in response.text
+    assert "container-s2-questions" in response.text
+    assert "container-s4-builder" in response.text
+    assert "SENTENCE_BUILDER_ITEMS" in response.text
+    assert "s2_questionsShortAnswers" in response.text
+    assert "IN FRONT OF" in response.text
 
 
 def test_health_check():
