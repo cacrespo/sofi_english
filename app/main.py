@@ -34,7 +34,7 @@ async def health():
 
 @app.get("/pdf")
 async def download_pdf():
-    """Descarga o visualización directa del PDF de 5 páginas."""
+    """Descarga o visualización directa del PDF de 15 páginas."""
     pdf_path = BASE_DIR / "static" / "Repaso_Ingles_Sofia_3er_Grado.pdf"
     return FileResponse(
         pdf_path,
