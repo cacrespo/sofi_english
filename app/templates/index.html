@@ -1427,7 +1427,7 @@
     </p>
     <div class="celebration-emojis">🌟 🏆 ⭐ 🌸 🐶</div>
     <div class="celebration-score-pill">
-      ⭐ Score: <span id="celebration-score-pts">71</span> / <span id="celebration-score-total">71</span> pts (100% Complete!)
+      ⭐ Score: <span id="celebration-score-pts">75</span> / <span id="celebration-score-total">75</span> pts (100% Complete!)
     </div>
     <p class="celebration-exam-date">
       Ready for Wednesday, December 2nd with Miss Vane & Miss Ani!
@@ -1570,8 +1570,8 @@
     <div class="card">
       <div class="card-banner">
         <span class="card-badge" style="background:#10b981;">2</span>
-        <h2 class="card-title">Where is Pebble & The Cats? (Prepositions of Place)</h2>
-        <span class="card-hint">Look at the picture below and choose the correct preposition!</span>
+        <h2 class="card-title">Where is the Cat? (Prepositions of Place)</h2>
+        <span class="card-hint">Look at the picture below and find Cats 1 to 6!</span>
       </div>
       <div class="cats-pic-container" style="text-align:center; margin:8px 0 14px 0;">
         <img src="/static/dandy_assets/cats_prepositions.jpg?v=2" alt="Where is the cat? Prepositions picture" style="width:100%; max-width:680px; height:auto; border-radius:14px; border:2.5px solid #a7f3d0; box-shadow:0 3px 10px rgba(0,0,0,0.08); display:inline-block;">
@@ -1721,7 +1721,7 @@
         Complete all exercises across the 5 stages to unlock your fullscreen superstar diploma with Dandy!
       </p>
       <div style="margin-top:10px; display:inline-flex; align-items:center; gap:8px; background:#e0f2fe; border:1.5px solid #7dd3fc; color:#0369a1; padding:6px 16px; border-radius:20px; font-weight:800; font-size:0.92rem;" id="diploma-progress-badge">
-        🎯 Progress: 0 of 71 exercises completed
+        🎯 Progress: 0 of 75 exercises completed
       </div>
     </div>
 
@@ -1832,25 +1832,12 @@
       { prompt: "______ a delicious strawberry ice-cream in Dandy's fridge.", correct: "There is", wrong: ["There are"] }
     ],
     s2_prepositions: [
-      { prompt: "Pebble is hiding ______ the big tree trunk.", correct: "behind", wrong: ["in", "between"] },
-      { prompt: "The fish is swimming ______ the clear river water.", correct: "in", wrong: ["on", "behind"] },
-      { prompt: "Pebble is sleeping ______ the wooden desk.", correct: "under", wrong: ["between", "on"] },
-      { prompt: "Flutter is flying ______ two pink flowers.", correct: "between", wrong: ["next to", "under"] },
-      { prompt: "The bird is sitting ______ the green tree branch.", correct: "on", wrong: ["under", "in front of"] },
-      { prompt: "The schoolbag is resting ______ the chair.", correct: "next to", wrong: ["between", "in"] },
-      { prompt: "Mrs. Bee is flying ______ the colourful flowers.", correct: "over", wrong: ["under", "behind"] },
-      { prompt: "The egg is safe ______ the bird's nest.", correct: "in", wrong: ["behind", "between"] },
-      { prompt: "Goob is standing ______ Dandy and Poppy.", correct: "between", wrong: ["under", "on"] },
-      { prompt: "The little rabbit is resting ______ the warm sun.", correct: "under", wrong: ["between", "behind"] },
-      { prompt: "The wooden chair is ______ the big classroom window.", correct: "in front of", wrong: ["behind", "under"] },
-      { prompt: "The girl is standing ______ the house waiting for the bus.", correct: "in front of", wrong: ["between", "under"] },
-      { prompt: "Where is the cat? Cat number one is ______ the wooden table.", correct: "under", wrong: ["on", "behind"] },
-      { prompt: "Where is the cat? Cat number two is sitting ______ the chair.", correct: "on", wrong: ["in", "under"] },
-      { prompt: "Where is the cat? Cat number three is hiding ______ the big tree.", correct: "behind", wrong: ["on", "in"] },
-      { prompt: "Where is the cat? Cat number four is curled up ______ the tall boot.", correct: "in", wrong: ["under", "between"] },
-      { prompt: "Where is the cat? Cat number five is standing ______ the round table.", correct: "on", wrong: ["under", "behind"] },
-      { prompt: "Where is the cat? Cat number six is hiding ______ the car.", correct: "under", wrong: ["on", "in"] },
-      { prompt: "Where is Pebble? Pebble is sitting ______ Dandy, wagging his tail.", correct: "in front of", wrong: ["between", "under"] }
+      { prompt: "Cat number one is ______ the table.", correct: "under", wrong: ["on", "behind"], sentence: "Cat number one is under the table." },
+      { prompt: "Cat number two is ______ the chair.", correct: "on", wrong: ["in", "under"], sentence: "Cat number two is on the chair." },
+      { prompt: "Cat number three is ______ the tree.", correct: "behind", wrong: ["on", "in"], sentence: "Cat number three is behind the tree." },
+      { prompt: "Cat number four is ______ the boot.", correct: "in", wrong: ["under", "between"], sentence: "Cat number four is in the boot." },
+      { prompt: "Cat number five is ______ the table.", correct: "on", wrong: ["under", "behind"], sentence: "Cat number five is on the table." },
+      { prompt: "Cat number six is ______ the car.", correct: "under", wrong: ["on", "in"], sentence: "Cat number six is under the car." }
     ],
     s2_questionsShortAnswers: [
       { prompt: "Look at the map: Is there a hospital?", correct: "Yes, there is.", wrong: ["No, there isn't.", "Yes, there are."], sentence: "Is there a hospital? Yes, there is." },
@@ -2280,7 +2267,7 @@
     renderQuestionGroup("container-s1-story", QUESTION_BANK.s1_story, 4);
 
     renderQuestionGroup("container-s2-thereIsAre", QUESTION_BANK.s2_thereIsAre, 4);
-    renderQuestionGroup("container-s2-prepositions", QUESTION_BANK.s2_prepositions, 4);
+    renderQuestionGroup("container-s2-prepositions", QUESTION_BANK.s2_prepositions, 6);
     renderQuestionGroup("container-s2-questions", QUESTION_BANK.s2_questionsShortAnswers, 4);
 
     renderFoodPool();
@@ -2640,7 +2627,7 @@
     const scorePts = document.getElementById('celebration-score-pts');
     const scoreTotal = document.getElementById('celebration-score-total');
     if (scorePts) scorePts.innerText = completed || score;
-    if (scoreTotal) scoreTotal.innerText = total || 71;
+    if (scoreTotal) scoreTotal.innerText = total || 75;
 
     modal.classList.add('show');
     playFanfare();
