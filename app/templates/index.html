@@ -1404,21 +1404,21 @@
   <div class="modal-card">
     <img src="/static/dandy_assets/dandy.png?v=2" class="modal-avatar" alt="Dandy">
     <h2 class="modal-title">⭐ Dandy's World English!</h2>
-    <p class="modal-subtitle">Welcome to Gardenview! What's your name?<br><span style="font-size:0.85rem; color:#94a3b8;">(¿Cómo te llamás?)</span></p>
+    <p class="modal-subtitle">Welcome to Gardenview! What is your name?</p>
     
     <div class="name-input-group">
-      <label for="student-name-input">Student Name / Nombre:</label>
-      <input type="text" id="student-name-input" class="name-input-field" placeholder="Tu nombre..." value="Sofía" maxlength="25" onkeydown="if(event.key==='Enter') saveStudentName()">
+      <label for="student-name-input">Student Name:</label>
+      <input type="text" id="student-name-input" class="name-input-field" placeholder="Type your name..." value="Sofía" maxlength="25" onkeydown="if(event.key==='Enter') saveStudentName()">
     </div>
 
-    <button class="btn-modal-start" onclick="saveStudentName()">🚀 ¡Let's Play! / ¡A jugar!</button>
+    <button class="btn-modal-start" onclick="saveStudentName()">🚀 Let's Play!</button>
   </div>
 </div>
 
 <!-- Celebration Fullscreen Modal (Popup) -->
 <div class="celebration-backdrop" id="celebration-modal">
   <div class="celebration-card">
-    <button class="modal-close-icon" onclick="closeCelebrationModal()" aria-label="Cerrar ventana">✕</button>
+    <button class="modal-close-icon" onclick="closeCelebrationModal()" aria-label="Close window">✕</button>
     <img src="/static/dandy_assets/dandy.png?v=2" class="celebration-avatar" alt="Dandy Superstar">
     <div class="celebration-badge-banner">🏆 OFFICIAL DIPLOMA 🏆</div>
     <h2 class="celebration-title">🎓 CONGRATULATIONS, <span class="dyn-student-name" style="text-transform:uppercase;">SOFÍA</span>! 🎓</h2>
@@ -1427,20 +1427,20 @@
     </p>
     <div class="celebration-emojis">🌟 🏆 ⭐ 🌸 🐶</div>
     <div class="celebration-score-pill">
-      ⭐ Score: <span id="celebration-score-pts">71</span> / <span id="celebration-score-total">71</span> pts (¡100% Completado!)
+      ⭐ Score: <span id="celebration-score-pts">71</span> / <span id="celebration-score-total">71</span> pts (100% Complete!)
     </div>
     <p class="celebration-exam-date">
       Ready for Wednesday, December 2nd with Miss Vane & Miss Ani!
     </p>
     <div class="celebration-actions">
       <a href="/static/Repaso_Ingles_Sofia_3er_Grado.pdf?v=2" target="_blank" class="btn-celebration-action btn-celebration-pdf">
-        🖨️ Descargar Cuadernillo PDF
+        🖨️ Download Review Booklet PDF
       </a>
       <button class="btn-celebration-action btn-celebration-close" onclick="closeCelebrationModal()">
-        🎉 ¡Seguir repasando!
+        🎉 Keep Reviewing!
       </button>
       <button class="btn-celebration-action btn-celebration-remix" onclick="closeCelebrationModal(); regenerateAllQuestions();">
-        🔄 Mezclar nuevos ejercicios
+        🔄 Shuffle New Questions
       </button>
     </div>
   </div>
@@ -1458,21 +1458,21 @@
       </div>
     </div>
     <div class="nav-actions">
-      <div class="student-pill" onclick="openNameModal()" title="Clic para cambiar de nombre">
+      <div class="student-pill" onclick="openNameModal()" title="Click to change student name">
         <span>👤</span>
         <span id="student-name-header">Sofía</span>
         <span class="btn-change-icon">✏️</span>
       </div>
-      <button class="speed-toggle-btn" id="speed-toggle" onclick="toggleTtsSpeed()" title="Velocidad de voz">
+      <button class="speed-toggle-btn" id="speed-toggle" onclick="toggleTtsSpeed()" title="Speech speed">
         <span id="speed-icon">🐰</span>
         <span id="speed-label">Normal</span>
       </button>
-      <button class="speed-toggle-btn" id="autoread-toggle" onclick="toggleAutoRead()" title="Leer frase completa al acertar">
+      <button class="speed-toggle-btn" id="autoread-toggle" onclick="toggleAutoRead()" title="Read full sentence aloud on correct answer">
         <span id="autoread-icon">🔊</span>
-        <span id="autoread-label">Frase: ON</span>
+        <span id="autoread-label">Sentence: ON</span>
       </button>
-      <button class="btn-shuffle" onclick="regenerateAllQuestions()" title="Cargar nuevas preguntas aleatorias">
-        🔄 Mezclar
+      <button class="btn-shuffle" onclick="regenerateAllQuestions()" title="Load new random questions">
+        🔄 Shuffle
       </button>
       <div class="score-badge" id="score-display">⭐ 0 pts</div>
       <a href="/static/Repaso_Ingles_Sofia_3er_Grado.pdf?v=2" target="_blank" class="btn-pdf">
@@ -1546,7 +1546,7 @@
       </div>
       <div class="story-box">
         "Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground."
-        <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, 'Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground.')">🎧 Escuchar Cuento (Listen)</button></div>
+        <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, 'Timmy and Poppy are in 3rd grade. Their classroom is big and bright. On the desk, there is a blue pencil case, three yellow pencils, and a green ruler. Timmy and Poppy love reading stories in the school library. During break time, they play games in the playground.')">🎧 Listen to Story</button></div>
       </div>
       <div id="container-s1-story" class="item-list"></div>
     </div>
@@ -1577,13 +1577,13 @@
         <img src="/static/dandy_assets/cats_prepositions.jpg?v=2" alt="Where is the cat? Prepositions picture" style="width:100%; max-width:680px; height:auto; border-radius:14px; border:2.5px solid #a7f3d0; box-shadow:0 3px 10px rgba(0,0,0,0.08); display:inline-block;">
       </div>
       <div class="prep-showcase">
-        <span class="prep-card">📥 IN (adentro)</span>
-        <span class="prep-card">🔛 ON (sobre)</span>
-        <span class="prep-card">👇 UNDER (debajo)</span>
-        <span class="prep-card">🙈 BEHIND (detrás)</span>
-        <span class="prep-card">👉 NEXT TO (al lado)</span>
-        <span class="prep-card">↔️ BETWEEN (entre)</span>
-        <span class="prep-card">👀 IN FRONT OF (delante)</span>
+        <span class="prep-card">📥 IN</span>
+        <span class="prep-card">🔛 ON</span>
+        <span class="prep-card">👇 UNDER</span>
+        <span class="prep-card">🙈 BEHIND</span>
+        <span class="prep-card">👉 NEXT TO</span>
+        <span class="prep-card">↔️ BETWEEN</span>
+        <span class="prep-card">👀 IN FRONT OF</span>
       </div>
       <div id="container-s2-prepositions" class="item-list"></div>
     </div>
@@ -1631,7 +1631,7 @@
       <div class="card-banner">
         <span class="card-badge">2</span>
         <h2 class="card-title">Dandy & Sprout's Pantry: "A", "An", "Some" or "ANY"?</h2>
-        <span class="card-hint">A / An (1) | Some (+ afirmativo) | Any (- negativo y ? preguntas)</span>
+        <span class="card-hint">A / An (singular) | Some (positive +) | Any (negative - and questions ?)</span>
       </div>
       <div id="container-s3-aAnSome" class="item-list"></div>
     </div>
@@ -1700,7 +1700,7 @@
       </div>
       <div class="story-box">
         "It is Wednesday. Timmy, <span class="dyn-student-name">Sofía</span> and their Toon friends are having a picnic in the nature park. There are <strong>five tall green trees</strong> near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: 'I love nature!'"
-        <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, 'It is Wednesday. Timmy and their Toon friends are having a picnic in the nature park. There are five tall green trees near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: I love nature!')">🎧 Escuchar Cuento (Listen)</button></div>
+        <div style="text-align:right;"><button class="btn-listen-story" onclick="speakPrompt(this, 'It is Wednesday. Timmy and their Toon friends are having a picnic in the nature park. There are five tall green trees near the blue river. Flutter is flying around three pink flowers. Pebble the dog is running happily on the grass. Sprout has an apple, a sandwich, and some fresh orange juice. Dandy smiles and says: I love nature!')">🎧 Listen to Story</button></div>
       </div>
       <div id="container-s5-story" class="item-list"></div>
     </div>
@@ -1716,23 +1716,23 @@
     <!-- Stage 5 Progress Card & Unlockable Diploma Trigger -->
     <div class="card" id="stage5-diploma-locked" style="text-align:center; padding: 22px 16px; background: #f8fafc; border: 2.5px dashed #cbd5e1; border-radius: 18px;">
       <div style="font-size:2.2rem; margin-bottom:4px;">🔒 🏆</div>
-      <h3 style="margin:4px 0; color:#334155; font-size:1.2rem;">Diploma Oficial de Miss Vane & Miss Ani</h3>
+      <h3 style="margin:4px 0; color:#334155; font-size:1.2rem;">Official Diploma from Miss Vane & Miss Ani</h3>
       <p style="margin:6px 0; font-size:0.92rem; color:#64748b;" id="diploma-status-hint">
-        Completá todos los ejercicios de las 5 etapas para desbloquear tu diploma en pantalla completa con Dandy.
+        Complete all exercises across the 5 stages to unlock your fullscreen superstar diploma with Dandy!
       </p>
       <div style="margin-top:10px; display:inline-flex; align-items:center; gap:8px; background:#e0f2fe; border:1.5px solid #7dd3fc; color:#0369a1; padding:6px 16px; border-radius:20px; font-weight:800; font-size:0.92rem;" id="diploma-progress-badge">
-        🎯 Progreso: 0 de 71 ejercicios
+        🎯 Progress: 0 of 71 exercises completed
       </div>
     </div>
 
     <div class="card" id="stage5-diploma-unlocked" style="display:none; text-align:center; background: linear-gradient(135deg, #fef08a 0%, #bbf7d0 100%); border: 3px solid #22c55e; border-radius: 18px; cursor:pointer;" onclick="openCelebrationModal()">
       <div style="font-size:1.8rem; margin-bottom:2px;">🏆 ⭐</div>
-      <h2 style="margin:4px 0; color:#15803d; font-size:1.35rem;">🎓 ¡DIPLOMA DESBLOQUEADO, <span class="dyn-student-name" style="text-transform:uppercase;">SOFÍA</span>! 🎓</h2>
+      <h2 style="margin:4px 0; color:#15803d; font-size:1.35rem;">🎓 DIPLOMA UNLOCKED, <span class="dyn-student-name" style="text-transform:uppercase;">SOFÍA</span>! 🎓</h2>
       <p style="margin:4px 0; font-size:1rem; font-weight:700; color:#166534;">
-        ¡Completaste todos los ejercicios con éxito!
+        You completed every exercise successfully!
       </p>
       <button class="btn-celebration-action btn-celebration-close" style="max-width:280px; margin:10px auto 4px auto;" onclick="openCelebrationModal()">
-        🌟 Ver Diploma en Pantalla Completa
+        🌟 View Fullscreen Diploma
       </button>
     </div>
   </section>
@@ -1741,8 +1741,8 @@
 
 <!-- Bottom Navigation Bar -->
 <div class="bottom-nav">
-  <button class="nav-step-btn btn-prev" id="btn-prev" onclick="prevStage()">⬅️ Anterior</button>
-  <button class="nav-step-btn" id="btn-next" onclick="nextStage()">Siguiente ➡️</button>
+  <button class="nav-step-btn btn-prev" id="btn-prev" onclick="prevStage()">⬅️ Previous</button>
+  <button class="nav-step-btn" id="btn-next" onclick="nextStage()">Next ➡️</button>
 </div>
 
 <script>
@@ -2066,7 +2066,7 @@
 
       const ttsBtn = document.createElement("button");
       ttsBtn.className = "btn-tts";
-      ttsBtn.title = "Listen / Escuchar";
+      ttsBtn.title = "Listen";
       ttsBtn.innerText = "🔊";
       ttsBtn.onclick = function() {
         const textToSpeak = qDiv.dataset.scored ? (qDiv.dataset.fullSentence || q.prompt) : q.prompt;
@@ -2168,7 +2168,7 @@
       targetBox.className = "scramble-target-box";
       const placeholder = document.createElement("span");
       placeholder.className = "scramble-target-placeholder";
-      placeholder.innerText = "Toca las palabras de abajo en orden...";
+      placeholder.innerText = "Tap the words below in order...";
       targetBox.appendChild(placeholder);
 
       const poolDiv = document.createElement("div");
@@ -2207,7 +2207,7 @@
           const chip = document.createElement("span");
           chip.className = "scramble-placed-chip";
           chip.innerText = pw.word;
-          chip.title = "Toca para quitar";
+          chip.title = "Tap to remove";
           chip.onclick = function() {
             getAudioCtx();
             playTone(330, 'sine', 0.08, 0);
@@ -2224,7 +2224,7 @@
 
       const clearBtn = document.createElement("button");
       clearBtn.className = "btn-clear-scramble";
-      clearBtn.innerText = "🔄 Limpiar";
+      clearBtn.innerText = "🔄 Clear";
       clearBtn.onclick = function() {
         placedWords.forEach(pw => pw.btn.classList.remove("placed"));
         placedWords.length = 0;
@@ -2233,7 +2233,7 @@
 
       const checkBtn = document.createElement("button");
       checkBtn.className = "btn-check-scramble";
-      checkBtn.innerText = "✅ Comprobar";
+      checkBtn.innerText = "✅ Check";
       checkBtn.onclick = function() {
         getAudioCtx();
         const currentSentence = placedWords.map(p => p.origWord).join(" ");
@@ -2401,7 +2401,7 @@
   function toggleAutoRead() {
     autoReadSentence = !autoReadSentence;
     document.getElementById('autoread-icon').innerText = autoReadSentence ? '🔊' : '🔇';
-    document.getElementById('autoread-label').innerText = autoReadSentence ? 'Frase: ON' : 'Frase: OFF';
+    document.getElementById('autoread-label').innerText = autoReadSentence ? 'Sentence: ON' : 'Sentence: OFF';
     playTone(autoReadSentence ? 660 : 440, 'sine', 0.1, 0);
   }
 
@@ -2442,7 +2442,7 @@
 
         const fbBtn = document.createElement('button');
         fbBtn.className = 'btn-tts';
-        fbBtn.title = 'Listen again / Escuchar frase';
+        fbBtn.title = 'Listen again';
         fbBtn.innerText = '🔊';
         fbBtn.onclick = function() {
           speakPrompt(this, displaySentence);
@@ -2503,13 +2503,13 @@
     isSlow = !isSlow;
     ttsRate = isSlow ? 0.72 : 0.88;
     document.getElementById('speed-icon').innerText = isSlow ? '🐢' : '🐰';
-    document.getElementById('speed-label').innerText = isSlow ? 'Despacio' : 'Normal';
+    document.getElementById('speed-label').innerText = isSlow ? 'Slow' : 'Normal';
     playTone(isSlow ? 440 : 660, 'sine', 0.1, 0);
   }
 
   function speakPrompt(btn, text, lang = 'en-US') {
     if (!('speechSynthesis' in window)) {
-      alert("Tu navegador no soporta lectura de voz.");
+      alert("Your browser does not support speech synthesis audio.");
       return;
     }
     window.speechSynthesis.cancel();
@@ -2610,7 +2610,7 @@
     const { total, completed } = getExerciseCounts();
     const progressBadge = document.getElementById('diploma-progress-badge');
     if (progressBadge) {
-      progressBadge.innerText = `🎯 Progreso: ${completed} de ${total} ejercicios`;
+      progressBadge.innerText = `🎯 Progress: ${completed} of ${total} exercises completed`;
     }
 
     const lockedCard = document.getElementById('stage5-diploma-locked');
@@ -2679,7 +2679,7 @@
     document.getElementById('btn-prev').style.visibility = (stageNum === 1) ? 'hidden' : 'visible';
     const nextBtn = document.getElementById('btn-next');
     if (stageNum === 5) {
-      nextBtn.innerText = '🏆 ¡Terminar!';
+      nextBtn.innerText = '🏆 Finish!';
       nextBtn.onclick = () => {
         const { total, completed } = getExerciseCounts();
         if (total > 0 && completed >= total) {
@@ -2687,12 +2687,12 @@
         } else {
           const remaining = total - completed;
           playTone(330, 'sine', 0.2, 0);
-          alert(`¡Casi listo, ${currentStudentName}! Te faltan ${remaining} ejercicios por responder correctamente para desbloquear tu Diploma de Superstar 🌟`);
+          alert(`Almost there, ${currentStudentName}! You have ${remaining} exercise(s) left to complete your Superstar Diploma! 🌟`);
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
       };
     } else {
-      nextBtn.innerText = 'Siguiente ➡️';
+      nextBtn.innerText = 'Next ➡️';
       nextBtn.onclick = nextStage;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
