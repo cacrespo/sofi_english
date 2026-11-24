@@ -14,7 +14,7 @@ def test_home_page():
     assert "container-s4-builder" in response.text
     assert "SENTENCE_BUILDER_ITEMS" in response.text
     assert "s2_questionsShortAnswers" in response.text
-    assert "IN FRONT OF" in response.text
+    assert "BEHIND" in response.text
 
 
 def test_health_check():
